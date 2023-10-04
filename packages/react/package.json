@@ -1,0 +1,39 @@
+{
+  "name": "@eras-library/react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "pnpm build:css && tsc",
+    "watch:css": "npx tailwindcss -i styles.css -o ./lib/output.css --watch",
+    "build:css": "npx tailwindcss -i styles.css -o ./lib/output.css",
+    "lint": "eslint --quiet --fix --no-error-on-unmatched-pattern ./**/*{js,jsx,ts,tsx}"
+  },
+  "dependencies": {
+    "@eras-library/foundation": "workspace:^",
+    "@types/react": "^18.2.24",
+    "deepmerge": "^4.3.1",
+    "material-ripple-effects": "^2.0.1",
+    "tailwind-merge": "^1.14.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/prop-types": "^15.7.8",
+    "clsx": "^2.0.0",
+    "next": "^13.5.3",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "next": ">=13.5.3",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "tailwindcss": "^3.3.3"
+  }
+}

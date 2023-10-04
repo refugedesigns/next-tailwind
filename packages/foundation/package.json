@@ -1,0 +1,19 @@
+{
+  "name": "@eras-library/foundation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:tokens": "style-dictionary build --config sd.config.js",
+    "build": "pnpm build:tokens && tsc",
+    "lint": "eslint --quiet --fix --no-error-on-unmatched-pattern ./**/*{js,jsx,ts,tsx}"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "style-dictionary": "^3.8.0",
+    "typescript": "^5.2.2"
+  }
+}

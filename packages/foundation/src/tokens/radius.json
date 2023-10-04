@@ -1,0 +1,13 @@
+{
+  "radius": {
+    "small": {
+      "value": "8px"
+    },
+    "medium": {
+      "value": "12px"
+    },
+    "large": {
+      "value": "20px"
+    }
+  }
+}
