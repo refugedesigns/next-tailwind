@@ -97,11 +97,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         findMatch(valid?.colors, color, 'primary')
       ],
     );
-    console.log(
-      variants[findMatch(valid?.variants, variant, 'filled')][
-        findMatch(valid?.colors, color, 'primary')
-      ],
-    );
 
     const buttonSize = objectsToString(
       sizes[findMatch(valid?.sizes, size, 'md')],
