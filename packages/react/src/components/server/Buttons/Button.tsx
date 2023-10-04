@@ -86,7 +86,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     className = className ?? defaultProps?.className;
     startIcon = startIcon ?? defaultProps?.startIcon;
     endIcon = endIcon ?? defaultProps?.endIcon;
-    console.log(color);
     // 3. set ripple instance
     const rippleEffect = ripple !== false && new Ripple();
 
