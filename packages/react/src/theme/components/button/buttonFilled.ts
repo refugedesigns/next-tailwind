@@ -1,10 +1,10 @@
 const buttonFilled: object = {
   primary: {
-    background: 'bg-blue-500',
+    background: 'bg-[#3366FF]',
     color: 'text-white',
     hover: 'hover:bg-[#2952CC] hover:cursor-pointer',
     active: 'active:bg-[#1F3D99] active:ring active:ring-[#D6E0FF]',
-    focus: 'focus:bg-[#2952CC] focus:ring focus:ring-[#D6E0FF]',
+    focus: 'focus:bg-[#3366FF] focus:ring focus:ring-[#D6E0FF]',
     disabled: 'disabled:bg-[#D6E0FF] disabled:border-0',
   },
   secondary: {

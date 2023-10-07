@@ -20,12 +20,12 @@ const buttonOutlined: object = {
       'disabled:border-[#D8DAE5] disabled:text-[#D8DAE5] disabled:cursor-not-allowed',
   },
   minimal: {
-    border: `border-2 border-[${colors.text[200]}]`,
+    border: `border-2 border-[#696F8C]`,
     color: `text-[#696F8C]`,
     hover: `hover:border-[#D8DAE5] hover:text-[#D8DAE5] hover:cursor-pointer`,
-    active: `active:border-[${colors.minimal[100]}] active:text-[${colors.minimal[100]}]`,
-    focus: `focus:border-[${colors.minimal[300]}] focus:text-[${colors.minimal[300]}]`,
-    disabled: `disabled:text-[${colors.minimal[50]}] disabled:border-[${colors.minimal[100]}] disabled:cursor-not-allowed`,
+    active: `active:border-[#f4f7fb] active:text-[#f4f7fb]`,
+    focus: `focus:border-[#fafbff] focus:text-[#fafbff]`,
+    disabled: `disabled:text-[#f4f7fb] disabled:border-[#f4f7fb] disabled:cursor-not-allowed`,
   },
   error: {
     color: `text-[#D14343]`,

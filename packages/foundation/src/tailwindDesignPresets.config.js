@@ -1,4 +1,4 @@
-const tokens = require('tokens/js/tokens');
+const tokens = require('./tokens/js/tokens');
 /**
  * Tailwind requires the values:
  *{
@@ -31,7 +31,9 @@ const flattenValue = (obj) => {
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ['"Inter",'],
+      sans: ['Roboto', 'sans-serif'],
+      serif: ['Roboto Slab', 'serif'],
+      body: ['Roboto', 'sans-serif'],
     },
     extend: {
       colors: flattenValue(tokens.colors),
@@ -39,6 +41,7 @@ module.exports = {
       spacing: flattenValue(tokens.spacings),
       animation: flattenValue(tokens.animations),
       boxShadow: flattenValue(tokens.shadows),
+      breakpoints: flattenValue(tokens.breakpoints),
     },
   },
   // Enable only necessary plugins

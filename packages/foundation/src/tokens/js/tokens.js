@@ -1,10 +1,169 @@
 /**
  * Do not edit directly
- * Generated on Mon, 02 Oct 2023 12:42:25 GMT
+ * Generated on Fri, 06 Oct 2023 05:49:20 GMT
  */
 
 module.exports = {
+  breakpoints: {
+    sm: {
+      value: '540px',
+      filePath: 'src/tokens/breakpoints.json',
+      isSource: true,
+      original: {
+        value: '540px',
+      },
+      name: 'BreakpointsSm',
+      attributes: {
+        category: 'breakpoints',
+        type: 'sm',
+      },
+      path: ['breakpoints', 'sm'],
+    },
+    md: {
+      value: '720px',
+      filePath: 'src/tokens/breakpoints.json',
+      isSource: true,
+      original: {
+        value: '720px',
+      },
+      name: 'BreakpointsMd',
+      attributes: {
+        category: 'breakpoints',
+        type: 'md',
+      },
+      path: ['breakpoints', 'md'],
+    },
+    lg: {
+      value: '960px',
+      filePath: 'src/tokens/breakpoints.json',
+      isSource: true,
+      original: {
+        value: '960px',
+      },
+      name: 'BreakpointsLg',
+      attributes: {
+        category: 'breakpoints',
+        type: 'lg',
+      },
+      path: ['breakpoints', 'lg'],
+    },
+    'lg-max': {
+      max: {
+        value: '960px',
+        filePath: 'src/tokens/breakpoints.json',
+        isSource: true,
+        original: {
+          value: '960px',
+        },
+        name: 'BreakpointsLgMaxMax',
+        attributes: {
+          category: 'breakpoints',
+          type: 'lg-max',
+          item: 'max',
+        },
+        path: ['breakpoints', 'lg-max', 'max'],
+      },
+    },
+    xl: {
+      value: '1140px',
+      filePath: 'src/tokens/breakpoints.json',
+      isSource: true,
+      original: {
+        value: '1140px',
+      },
+      name: 'BreakpointsXl',
+      attributes: {
+        category: 'breakpoints',
+        type: 'xl',
+      },
+      path: ['breakpoints', 'xl'],
+    },
+    '2xl': {
+      value: '1320px',
+      filePath: 'src/tokens/breakpoints.json',
+      isSource: true,
+      original: {
+        value: '1320px',
+      },
+      name: 'Breakpoints2xl',
+      attributes: {
+        category: 'breakpoints',
+        type: '2xl',
+      },
+      path: ['breakpoints', '2xl'],
+    },
+  },
   colors: {
+    white: {
+      value: '#ffffff',
+      filePath: 'src/tokens/colors.json',
+      isSource: true,
+      original: {
+        value: '#ffffff',
+      },
+      name: 'ColorsWhite',
+      attributes: {
+        category: 'colors',
+        type: 'white',
+      },
+      path: ['colors', 'white'],
+    },
+    black: {
+      value: '#000000',
+      filePath: 'src/tokens/colors.json',
+      isSource: true,
+      original: {
+        value: '#000000',
+      },
+      name: 'ColorsBlack',
+      attributes: {
+        category: 'colors',
+        type: 'black',
+      },
+      path: ['colors', 'black'],
+    },
+    inherit: {
+      value: 'inherit',
+      filePath: 'src/tokens/colors.json',
+      isSource: true,
+      original: {
+        value: 'inherit',
+      },
+      name: 'ColorsInherit',
+      attributes: {
+        category: 'colors',
+        type: 'inherit',
+      },
+      path: ['colors', 'inherit'],
+    },
+    transparent: {
+      value: 'transparent',
+      filePath: 'src/tokens/colors.json',
+      isSource: true,
+      original: {
+        value: 'transparent',
+      },
+      name: 'ColorsTransparent',
+      attributes: {
+        category: 'colors',
+        type: 'transparent',
+      },
+      path: ['colors', 'transparent'],
+    },
+    current: {
+      value: 'currentColor',
+      filePath: 'src/tokens/colors.json',
+      isSource: true,
+      original: {
+        value: 'currentColor',
+      },
+      name: 'ColorsCurrent',
+      attributes: {
+        category: 'colors',
+        type: 'current',
+      },
+      path: ['colors', 'current'],
+    },
     neutral: {
       0: {
         value: '#FFFFFF',
@@ -1089,33 +1248,122 @@ module.exports = {
     },
   },
   shadows: {
-    'elevation-10': {
-      value: '0px 4px 6px rgba(33, 37, 41, 0.2)',
+    sm: {
+      value: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
       filePath: 'src/tokens/shadows.json',
       isSource: true,
       original: {
-        value: '0px 4px 6px rgba(33, 37, 41, 0.2)',
+        value: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
       },
-      name: 'ShadowsElevation10',
+      name: 'ShadowsSm',
       attributes: {
         category: 'shadows',
-        type: 'elevation-10',
+        type: 'sm',
       },
-      path: ['shadows', 'elevation-10'],
+      path: ['shadows', 'sm'],
     },
-    'elevation-20': {
-      value: '0px 2px 10px rgba(33, 37, 41, 0.15)',
+    default: {
+      value: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
       filePath: 'src/tokens/shadows.json',
       isSource: true,
       original: {
-        value: '0px 2px 10px rgba(33, 37, 41, 0.15)',
+        value: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
       },
-      name: 'ShadowsElevation20',
+      name: 'ShadowsDefault',
       attributes: {
         category: 'shadows',
-        type: 'elevation-20',
+        type: 'default',
       },
-      path: ['shadows', 'elevation-20'],
+      path: ['shadows', 'default'],
+    },
+    md: {
+      value: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      filePath: 'src/tokens/shadows.json',
+      isSource: true,
+      original: {
+        value:
+          '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      },
+      name: 'ShadowsMd',
+      attributes: {
+        category: 'shadows',
+        type: 'md',
+      },
+      path: ['shadows', 'md'],
+    },
+    lg: {
+      value:
+        '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+      filePath: 'src/tokens/shadows.json',
+      isSource: true,
+      original: {
+        value:
+          '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+      },
+      name: 'ShadowsLg',
+      attributes: {
+        category: 'shadows',
+        type: 'lg',
+      },
+      path: ['shadows', 'lg'],
+    },
+    xl: {
+      value:
+        '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+      filePath: 'src/tokens/shadows.json',
+      isSource: true,
+      original: {
+        value:
+          '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+      },
+      name: 'ShadowsXl',
+      attributes: {
+        category: 'shadows',
+        type: 'xl',
+      },
+      path: ['shadows', 'xl'],
+    },
+    '2xl': {
+      value: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+      filePath: 'src/tokens/shadows.json',
+      isSource: true,
+      original: {
+        value: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+      },
+      name: 'Shadows2xl',
+      attributes: {
+        category: 'shadows',
+        type: '2xl',
+      },
+      path: ['shadows', '2xl'],
+    },
+    inner: {
+      value: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+      filePath: 'src/tokens/shadows.json',
+      isSource: true,
+      original: {
+        value: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+      },
+      name: 'ShadowsInner',
+      attributes: {
+        category: 'shadows',
+        type: 'inner',
+      },
+      path: ['shadows', 'inner'],
+    },
+    none: {
+      value: '0 0 rgb(0, 0 / 0, 0)',
+      filePath: 'src/tokens/shadows.json',
+      isSource: true,
+      original: {
+        value: '0 0 rgb(0, 0 / 0, 0)',
+      },
+      name: 'ShadowsNone',
+      attributes: {
+        category: 'shadows',
+        type: 'none',
+      },
+      path: ['shadows', 'none'],
     },
   },
   spacings: {

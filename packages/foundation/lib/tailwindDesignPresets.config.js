@@ -1,5 +1,6 @@
 'use strict';
 var tokens = require('./tokens/js/tokens');
+var defaultTheme = require('tailwindcss/defaultTheme');
 /**
  * Tailwind requires the values:
  *{
@@ -28,14 +29,19 @@ var flattenValue = function (obj) {
   return result;
 };
 module.exports = {
-  prefix: 'eras-',
   theme: {
-    colors: flattenValue(tokens.colors),
-    borderRadius: flattenValue(tokens.radius),
-    spacing: flattenValue(tokens.spacings),
-    boxShadow: flattenValue(tokens.shadows),
+    ...defaultTheme,
     fontFamily: {
-      sans: ['"Inter"'],
+      sans: ['Roboto', 'sans-serif'],
+      serif: ['Roboto Slab', 'serif'],
+      body: ['Roboto', 'sans-serif'],
+    },
+    extend: {
+      colors: flattenValue(tokens.colors),
+      borderRadius: flattenValue(tokens.radius),
+      spacing: flattenValue(tokens.spacings),
+      boxShadow: flattenValue(tokens.shadows),
+      breakpoints: flattenValue(tokens.breakpoints),
     },
   },
   // Enable only necessary plugins

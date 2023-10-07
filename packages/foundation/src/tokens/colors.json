@@ -1,5 +1,20 @@
 {
   "colors": {
+    "white": {
+      "value": "#ffffff"
+    },
+    "black": {
+      "value": "#000000"
+    },
+    "inherit": {
+      "value": "inherit"
+    },
+    "transparent": {
+      "value": "transparent"
+    },
+    "current": {
+      "value": "currentColor"
+    },
     "neutral": {
       "0": {
         "value": "#FFFFFF"

@@ -90,6 +90,8 @@ export const button: ButtonStyleTypes = {
         borderRadius: 'rounded-lg',
         fontFamily: 'font-sans',
         disabled: 'disabled:shadow-none disabled:cursor-events-none',
+        display: 'flex',
+        alignItems: 'items-center',
       },
       fullWidth: {
         width: 'w-full',

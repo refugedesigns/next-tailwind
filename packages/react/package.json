@@ -15,6 +15,7 @@
     "@types/react": "^18.2.24",
     "deepmerge": "^4.3.1",
     "material-ripple-effects": "^2.0.1",
+    "react-svg-spinner": "^1.0.4",
     "tailwind-merge": "^1.14.0"
   },
   "keywords": [],

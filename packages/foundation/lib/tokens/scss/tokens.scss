@@ -1,7 +1,18 @@
 
 // Do not edit directly
-// Generated on Mon, 02 Oct 2023 12:42:25 GMT
+// Generated on Fri, 06 Oct 2023 05:49:20 GMT
 
+$breakpoints-sm: 540px;
+$breakpoints-md: 720px;
+$breakpoints-lg: 960px;
+$breakpoints-lg-max-max: 960px;
+$breakpoints-xl: 1140px;
+$breakpoints-2xl: 1320px;
+$colors-white: #ffffff;
+$colors-black: #000000;
+$colors-inherit: inherit;
+$colors-transparent: transparent;
+$colors-current: currentColor;
 $colors-neutral-0: #FFFFFF;
 $colors-neutral-50: #FAFBFF;
 $colors-neutral-75: #F9FAFC;
@@ -73,8 +84,14 @@ $colors-orange-600: #85462b;
 $radius-small: 8px;
 $radius-medium: 12px;
 $radius-large: 20px;
-$shadows-elevation-10: 0px 4px 6px rgba(33, 37, 41, 0.2);
-$shadows-elevation-20: 0px 2px 10px rgba(33, 37, 41, 0.15);
+$shadows-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$shadows-default: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+$shadows-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$shadows-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+$shadows-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+$shadows-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+$shadows-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+$shadows-none: 0 0 rgb(0, 0 / 0, 0);
 $spacings-4: 4px;
 $spacings-6: 6px;
 $spacings-8: 8px;

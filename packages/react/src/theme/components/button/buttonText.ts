@@ -1,5 +1,3 @@
-import colors from '../../base/colors';
-
 const buttonText: object = {
   primary: {
     color: 'text-[#3366FF]',
@@ -16,18 +14,18 @@ const buttonText: object = {
     disabled: 'disabled:text-[#D8DAE5] disabled:cursor-not-allowed',
   },
   minimal: {
-    color: `text-[${colors.text[200]}]`,
-    hover: `hover:text-[${colors.minimal[200]}] hover:cursor-pointer`,
-    active: `active:text-[${colors.minimal[100]}]`,
-    focus: `focus:text-[${colors.minimal[300]}]`,
-    disabled: `disabled:text-[${colors.minimal[50]}] disabled:cursor-not-allowed`,
+    color: `text-[#696F8C]`,
+    hover: `hover:text-[#D8DAE5] hover:cursor-pointer`,
+    active: `active:text-[#f4f7fb]`,
+    focus: `focus:text-[#fafbff]`,
+    disabled: `disabled:text-[#f4f7fb] disabled:cursor-not-allowed`,
   },
   error: {
-    color: `text-[${colors.error[100]}]`,
-    hover: `text-[${colors.error[200]}] hover:cursor-pointer`,
-    active: `active:text-[${colors.error[300]}]`,
-    focus: `focus:text-[${colors.error[200]}] focus:ring focus:ring-[${colors.ring[100]}]`,
-    disabled: `disabled:text-[${colors.error[100]}] disabled:cursor-not-allowed`,
+    color: `text-[#D14343]`,
+    hover: `text-[#A73636] hover:cursor-pointer`,
+    active: `active:text-[#7D2828]`,
+    focus: `focus:text-[#D14343]`,
+    disabled: `disabled:text-[#F9DADA] disabled:cursor-not-allowed`,
   },
 };
 

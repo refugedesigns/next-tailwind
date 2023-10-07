@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import React from '@eras-library/react/node_modules/react';
+import { BsArrowRight } from 'react-icons/bs';
 import Button from '../../react/src/components/server/Buttons/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -105,5 +106,25 @@ export const Capsule: Story = {
 export const NoRipple: Story = {
   args: {
     ripple: false,
+  },
+};
+
+export const StartIcon: Story = {
+  args: {
+    startIcon: React.createElement(BsArrowRight, { className: '' }),
+  },
+};
+export const EndIcon: Story = {
+  args: {
+    endIcon: React.createElement(BsArrowRight, { className: '' }),
+    color: 'primary',
+    variant: 'outlined',
+  },
+};
+export const Loading: Story = {
+  args: {
+    startIcon: React.createElement(BsArrowRight, { className: '' }),
+    color: 'error',
+    loading: true,
   },
 };

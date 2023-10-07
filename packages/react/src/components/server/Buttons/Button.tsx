@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -34,6 +34,8 @@ import Ripple from 'material-ripple-effects';
 import { useTheme } from '../../../context/theme';
 import objectsToString from '../../utils/objectsToString';
 import findMatch from '../../utils/findMatch';
+import IconWrapper from './IconWrapper';
+import Spinner from 'react-svg-spinner';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   /** If button is in disabled state */
@@ -50,6 +52,8 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   ripple?: ripple;
   elevated?: elevated;
   className?: className;
+  iconProps?: HTMLOrSVGElement;
+  iconRef?: React.RefObject<HTMLOrSVGElement>;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -66,7 +70,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       fullWidth,
       capsule,
+      elevated,
       ripple,
+      iconProps,
+      iconRef,
       ...rest
     },
     ref,
@@ -84,13 +91,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     capsule = capsule ?? defaultProps?.capsule;
     ripple = ripple ?? defaultProps?.ripple;
     className = className ?? defaultProps?.className;
+    elevated = elevated ?? defaultProps?.elevated;
     startIcon = startIcon ?? defaultProps?.startIcon;
     endIcon = endIcon ?? defaultProps?.endIcon;
     // 3. set ripple instance
     const rippleEffect = ripple !== false && new Ripple();
 
     // 4. set styles
-    const buttonBase = objectsToString(base.initial);
+    const buttonBase = objectsToString(base?.initial);
     const buttonVariant = objectsToString(
       variants[findMatch(valid?.variants, variant, 'filled')][
         findMatch(valid?.colors, color, 'primary')
@@ -105,10 +113,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       clsx(buttonVariant, buttonBase, buttonSize, {
         [objectsToString(base?.fullWidth)]: fullWidth,
         [objectsToString(base?.capsule)]: capsule,
+        [objectsToString(base?.elevated)]: elevated,
       }),
       className,
     );
-    console.log(classes);
     return (
       <button
         className={classes}
@@ -125,7 +133,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         }}
         {...rest}
       >
+        {startIcon && !loading && (
+          <IconWrapper {...iconProps} ref={iconRef} size={size}>
+            {startIcon}
+          </IconWrapper>
+        )}
         {children}
+        {endIcon && !loading && (
+          <IconWrapper {...iconProps} ref={iconRef} size={size}>
+            {endIcon}
+          </IconWrapper>
+        )}
+        {loading && (
+          <IconWrapper>
+            <Spinner gap={1} />
+          </IconWrapper>
+        )}
       </button>
     );
   },
