@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from '@eras-library/react/node_modules/react';
+import React from 'react';
 import { BsArrowRight } from 'react-icons/bs';
-import Button from '../../react/src/components/server/Buttons/Button';
+import Button from './Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {

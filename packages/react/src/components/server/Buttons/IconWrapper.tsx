@@ -46,7 +46,6 @@ const IconWrapper = React.forwardRef<HTMLSpanElement, IconWrapperProps>(
       'h-5 w-5 mx-1',
     );
 
-    console.log(classes);
     return (
       <span {...rest} ref={ref}>
         {children &&
