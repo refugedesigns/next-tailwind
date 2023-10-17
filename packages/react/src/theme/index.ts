@@ -1,11 +1,13 @@
 import button from './components/button';
 import iconWrapperClasses from './components/iconWrapper';
 import input from './components/textInput';
+import selectClasses from './components/select';
 
 const theme = {
   button,
-  iconWrapperClasses,
+  iconWrapper: iconWrapperClasses,
   input,
+  select: selectClasses,
 };
 
 export * from './components/button';

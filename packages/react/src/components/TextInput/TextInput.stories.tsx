@@ -5,7 +5,7 @@ import { TextInput } from './TextInput';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Components/Server/TextInput',
+  title: 'Components/TextInput',
   component: TextInput,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
@@ -62,12 +62,12 @@ Large.args = {
 export const Required: Story = {};
 Required.args = {
   required: true,
-  color: 'error'
+  color: 'error',
 };
 
 export const FullWidth: Story = {
   args: {
     fullWidth: true,
-    color: 'secondary'
+    color: 'secondary',
   },
-}
+};

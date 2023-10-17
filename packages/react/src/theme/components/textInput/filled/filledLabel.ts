@@ -13,6 +13,6 @@ const outlinedLabelClasses = {
   origin: 'origin-[0]',
   transitionDuration: 'duration-300',
   transform: 'transform',
-  width: 'w-full'
+  width: 'w-full',
 };
 export default outlinedLabelClasses;

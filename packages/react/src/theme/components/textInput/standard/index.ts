@@ -69,13 +69,8 @@ const inputOutlinedClasses: InputVariantStylesType = {
     fontWeight: 'font-normal',
   },
   shrink: {
-    input: {
-      // borderTop: '!border-t-transparent',
-    },
-    label: {
-      fontSize: '!text-[11px]',
-      lineHeight: '!text-[11px]',
-    },
+    input: {},
+    label: {},
   },
 };
 

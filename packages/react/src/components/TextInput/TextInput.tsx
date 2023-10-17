@@ -16,7 +16,7 @@ import {
   error,
   errorMessage,
   success,
-} from '../../../types/components/textInput';
+} from '../../types/components/textInput';
 
 import {
   propTypesColor,
@@ -32,10 +32,10 @@ import {
   propTypesLabelProps,
   propTypesSize,
   propTypesFullWidth,
-} from '../../../types/components/textInput';
-import { useTheme } from '../../../context/theme';
-import findMatch from '../../utils/findMatch';
-import objectsToString from '../../utils/objectsToString';
+} from '../../types/components/textInput';
+import { useTheme } from '../../context/theme';
+import findMatch from '../utils/findMatch';
+import objectsToString from '../utils/objectsToString';
 
 export interface InputProps
   extends Omit<React.ComponentProps<'input'>, 'size'> {
