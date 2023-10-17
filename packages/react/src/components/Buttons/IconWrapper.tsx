@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  size,
-  className,
-  children,
-} from '../../../types/components/iconWrappter';
+import { size, className, children } from '../../types/components/iconWrappter';
 import {
   propTypesSize,
   propTypesClassName,
   propTypesChildren,
-} from '../../../types/components/iconWrappter';
-import { useTheme } from '../../../context/theme';
+} from '../../types/components/iconWrappter';
+import { useTheme } from '../../context/theme';
 import clsx from 'clsx';
-import objectsToString from '../../utils/objectsToString';
-import findMatch from '../../utils/findMatch';
+import objectsToString from '../utils/objectsToString';
+import findMatch from '../utils/findMatch';
 import { twMerge } from 'tailwind-merge';
 
 interface IconWrapperProps extends React.ComponentPropsWithoutRef<'span'> {

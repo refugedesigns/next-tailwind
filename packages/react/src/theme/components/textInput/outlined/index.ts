@@ -8,8 +8,7 @@ const inputOutlinedClasses: InputVariantStylesType = {
     input: {
       borderWidth: 'placeholder-shown:border',
       floated: {
-        borderWidth:
-          'border focus:border-2 focus:outline-none',
+        borderWidth: 'border focus:border-2 focus:outline-none',
       },
       bg: 'bg-transparent',
       height: 'h-full',
@@ -77,7 +76,7 @@ const inputOutlinedClasses: InputVariantStylesType = {
     },
     label: {
       fontSize: '!text-[11px]',
-      lineHeight: '!text-[11px]',
+      lineHeight: '!leading-tight',
     },
   },
 };

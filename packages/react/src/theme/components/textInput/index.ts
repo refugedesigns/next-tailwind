@@ -21,7 +21,7 @@ import {
 import inputOutlinedClasses from './outlined';
 import inputFilledClasses from './filled';
 import inputStandardClasses from './standard';
-import inputDefaultClasses from "./default"
+import inputDefaultClasses from './default';
 
 export interface InputSizeStyleType {
   container?: object;
@@ -157,7 +157,7 @@ const inputClasses: InputStylesType = {
       outlined: inputOutlinedClasses,
       filled: inputFilledClasses,
       standard: inputStandardClasses,
-      default: inputDefaultClasses
+      default: inputDefaultClasses,
     },
     fullWidth: {
       container: {

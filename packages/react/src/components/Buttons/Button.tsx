@@ -15,7 +15,7 @@ import type {
   disabled,
   loading,
   elevated,
-} from '../../../types/components/button';
+} from '../../types/components/button';
 import {
   propTypesCapsule,
   propTypesClassName,
@@ -29,11 +29,11 @@ import {
   propTypesStartIcon,
   propTypesSize,
   propTypesVariant,
-} from '../../../types/components/button';
+} from '../../types/components/button';
 import Ripple from 'material-ripple-effects';
-import { useTheme } from '../../../context/theme';
-import objectsToString from '../../utils/objectsToString';
-import findMatch from '../../utils/findMatch';
+import { useTheme } from '../../context/theme';
+import objectsToString from '../utils/objectsToString';
+import findMatch from '../utils/findMatch';
 import IconWrapper from './IconWrapper';
 import Spinner from 'react-svg-spinner';
 
