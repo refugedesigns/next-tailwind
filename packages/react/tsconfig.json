@@ -1,11 +1,26 @@
 {
-  "extends": "../../tsconfig.json",
+  "include": ["src"],
   "compilerOptions": {
-    "baseUrl": "./src",
-    "outDir": "./lib",
-    "downlevelIteration": true,
-    "target": "esnext",
-    "jsx": "react-jsx"
-  },
-  "include": ["./src", "tailwind.config.js"]
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "incremental": false,
+    "isolatedModules": true,
+    "importsNotUsedAsValues": "error",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "strict": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "noUncheckedIndexedAccess": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "declarationMap": true,
+    "baseUrl": ".",
+    "ignoreDeprecations": "5.0",
+    "typeRoots": ["./node_modules/@types"]
+  }
 }

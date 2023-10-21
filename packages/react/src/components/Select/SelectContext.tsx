@@ -1,31 +1,34 @@
 import React from 'react';
 
+// framer-motion
 import { useIsomorphicLayoutEffect } from 'framer-motion';
 
+// types
 import type { contextValue, children } from '../../types/components/select';
 import {
   propTypesContextValue,
   propTypesChildren,
 } from '../../types/components/select';
 
-export type SelectContextValue = contextValue;
+export type SelectContextType = contextValue;
 
 export interface SelectContextProviderProps {
   value: contextValue;
   children: children;
 }
 
-export const SelectContext = React.createContext<SelectContextValue>(
-  {} as SelectContextValue,
+export const SelectContext = React.createContext<SelectContextType | null>(
+  null,
 );
-
-SelectContext.displayName = 'SelectContext';
+SelectContext.displayName = 'MaterialTailwind.SelectContext';
 
 export function useSelect() {
   const context = React.useContext(SelectContext);
 
   if (context === null) {
-    throw new Error('useSelect must be used within a SelectContextProvider');
+    throw new Error(
+      'useSelect() must be used within a Select. It happens when you use SelectOption component outside the Select component.',
+    );
   }
 
   return context;
@@ -55,4 +58,4 @@ SelectContextProvider.propTypes = {
   children: propTypesChildren,
 };
 
-SelectContextProvider.displayName = 'SelectContextProvider';
+SelectContextProvider.displayName = 'MaterialTailwind.SelectContextProvider';
