@@ -19,12 +19,18 @@ import type {
   animation,
   disabled,
   labelProps,
+  name,
+  children,
+  fullWidth,
+  icon
 } from '../../../types/components/select';
 import {
   propTypesVariant,
   propTypesSize,
   propTypesColor,
 } from '../../../types/components/select';
+
+import selectOutlinedClasses from './outlined';
 
 export interface SelectSizeStylesType {
   container?: object;
@@ -37,6 +43,7 @@ export interface SelectSizeStylesType {
       withValue?: object;
     };
   };
+  icon?: object;
 }
 
 export interface SelectStatesStylesType {
@@ -77,6 +84,8 @@ export interface SelectVariantStylesType {
   base?: {
     select?: object;
     label?: object;
+    selectWithIcon?: object;
+    icon?: object;
   };
   sizes?: {
     md?: SelectSizeStylesType;
@@ -87,6 +96,7 @@ export interface SelectVariantStylesType {
     label?: object;
   };
   states?: SelectStatesStylesType;
+  
 }
 
 export interface SelectStylesType {
@@ -111,6 +121,10 @@ export interface SelectStylesType {
     className?: className;
     disabled?: disabled;
     labelProps?: labelProps;
+    name?: name;
+    children?: children;
+    fullWidth?: fullWidth;
+    icon?: icon;
   };
   valid?: {
     variants?: string[];
@@ -139,19 +153,24 @@ export interface SelectStylesType {
       outlined?: SelectVariantStylesType;
       default?: SelectVariantStylesType;
     };
+    fullWidth?: {
+      container?: object;
+      label?: object;
+      select?: object;
+    };
   };
 }
 
 export const selectClasses: SelectStylesType = {
   defaultProps: {
-    variant: 'standard',
+    variant: 'outlined',
     color: 'primary',
     size: 'md',
     label: '',
     error: false,
     success: false,
-    arrow: '',
-    value: '',
+    arrow: undefined,
+    value: undefined,
     onChange: undefined,
     selected: undefined,
     offset: 5,
@@ -172,6 +191,110 @@ export const selectClasses: SelectStylesType = {
     variants: propTypesVariant,
     sizes: propTypesSize,
     colors: propTypesColor,
+  },
+  styles: {
+    base: {
+      container: {
+        position: 'relative',
+        maxWidth: 'max-w-[300px]',
+      },
+      select: {
+        peer: 'peer',
+        width: 'w-full',
+        height: 'h-full',
+        bg: 'bg-transparent',
+        color: 'text-blue-gray-600',
+        fontFamily: 'font-sans',
+        fontWeight: 'font-normal',
+        textAlign: 'text-left',
+        outline: 'outline outline-0 focus:outline-0',
+        disabled: 'disabled:bg-blue-gray-50 disabled:border-0',
+        transition: 'transition-all',
+      },
+      arrow: {
+        initial: {
+          display: 'grid',
+          placeItems: 'place-items-center',
+          position: 'absolute',
+          top: 'top-1/2',
+          right: 'right-2',
+          pt: 'pt-px',
+          width: 'w-6',
+          height: 'h-6',
+          color: 'text-blue-gray-400',
+          transform: 'rotate-0 -translate-y-1/2',
+          transition: 'transition-all',
+        },
+        active: {
+          transform: 'rotate-180',
+          mt: 'mt-px',
+        },
+      },
+      label: {
+        display: 'flex',
+        userSelect: 'select-none',
+        pointerEvents: 'pointer-events-none',
+        position: 'absolute',
+        left: 'left-0',
+        fontWeight: 'font-normal',
+        transition: 'transition-all',
+      },
+      menu: {
+        width: 'w-full',
+        maxHeight: 'max-h-96',
+        bg: 'bg-white',
+        borderRadius: 'rounded-md',
+        border: 'border',
+        fontFamily: 'font-sans',
+        fontWeight: 'font-normal',
+        fontSize: 'text-sm',
+        overflow: 'overflow-auto',
+        outline: 'focus:outline-none',
+        color: 'text-blue-gray-500',
+      },
+      option: {
+        initial: {
+          pt: 'pt-[9px]',
+          px: 'px-3',
+          borderRadius: 'rounded-md',
+          lineHeight: 'leading-tight',
+          cursor: 'cursor-pointer',
+          userSelect: 'select-none',
+          background: 'hover:bg-blue-gray-50 focus:bg-blue-gray-50',
+          opacity: 'hover:bg-opacity-80 focus:bg-opacity-80',
+          color: 'hover:text-blue-gray-900 focus:text-blue-gray-900',
+          outline: 'outline outline-0',
+          transition: 'transition-all',
+          display: 'flex',
+          alignItems: 'items-center',
+        },
+        active: {
+          bg: 'bg-blue-gray-50 bg-opacity-80',
+          color: 'text-blue-gray-900',
+        },
+        disabled: {
+          opacity: 'opacity-50',
+          cursor: 'cursor-not-allowed',
+          userSelect: 'select-none',
+          pointerEvents: 'pointer-events-none',
+        },
+      },
+    },
+    variants: {
+      outlined: selectOutlinedClasses,
+    },
+    fullWidth: {
+      container: {
+        width: '!w-full',
+        maxWidth: '!max-w-full',
+      },
+      select: {
+        width: '!w-full',
+      },
+      label: {
+        lineHeight: 'leading-wide focus:leading-wide',
+      },
+    },
   },
 };
 

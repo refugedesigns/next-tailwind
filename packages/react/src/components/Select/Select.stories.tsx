@@ -1,5 +1,6 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { BsArrowRight } from 'react-icons/bs';
+import { BiChevronDown } from 'react-icons/bi';
 
 import { Select, Option, SelectComponent } from '.';
 
@@ -33,7 +34,7 @@ const meta = {
       </Option>
     )),
     label: 'Select...',
-    arrow: <BsArrowRight />,
+    arrow: <BiChevronDown className="w-6 h-6" />,
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],
@@ -50,3 +51,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Outlined: Story = {};
+
+export const WithInitialValue: Story = {
+  args: {
+    value: 'Pig',
+    onChange: undefined
+  },
+};
+
+export const WithSelectFunc: Story = {
+  args: {
+    selected: (element, index) => {
+      return (
+        element &&
+        React.cloneElement(element, {
+          disabled: true,
+          className:
+            'flex items-center opacity-100 px-0 gap-2 pointer-events-none',
+        })
+      );
+    },
+  },
+};

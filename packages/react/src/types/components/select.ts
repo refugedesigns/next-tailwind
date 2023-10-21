@@ -49,16 +49,16 @@ export type className = string;
 export type name = string;
 export type children = ReactNode;
 export type contextValue = {
+  selectedIndex: number;
+  setSelectedIndex: (index: number) => void;
   activeIndex?: number | null;
-  selectedIndex?: number | null;
-  getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
-  handleSelect: (index: number | null) => void;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
-  setSelectedIndex: React.Dispatch<React.SetStateAction<number | null>>;
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setActiveIndex: (index: number | null) => void;
   listRef: React.MutableRefObject<Array<HTMLLIElement | null>>;
+  listItemsRef: React.MutableRefObject<Array<string | null>>;
+  setIsOpen: (open: boolean) => void;
+  onChange: (value: string) => void;
+  getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => any;
   dataRef: ContextData;
-  onChange?: (value?: string) => void;
 };
 
 // Javascript Types
@@ -73,7 +73,7 @@ export const propTypesFullWidth = PropTypes.bool;
 export const propTypesIcon = PropTypes.node;
 export const propTypesClassName = PropTypes.string;
 export const propTypesShrink = PropTypes.bool;
-export const propTypesContextValue = PropTypes.shape({
+export const propTypesContextValue: any = PropTypes.shape({
   selectedIndex: PropTypes.number.isRequired,
   setSelectedIndex: PropTypes.func.isRequired,
   activeIndex: PropTypes.oneOfType([
@@ -82,7 +82,8 @@ export const propTypesContextValue = PropTypes.shape({
   ]),
   setActiveIndex: PropTypes.func.isRequired,
   listRef: PropTypes.instanceOf(Object).isRequired,
-  setOpen: PropTypes.func.isRequired,
+  listItemsRef: PropTypes.instanceOf(Object).isRequired,
+  setIsOpen: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   getItemProps: PropTypes.func.isRequired,
   dataRef: PropTypes.instanceOf(Object).isRequired,
