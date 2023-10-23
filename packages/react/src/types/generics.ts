@@ -2,6 +2,26 @@ import type { AnimatePresenceProps } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 export type colors = 'primary' | 'secondary' | 'minimal' | 'success' | 'error';
+export type extraColors =
+  | 'blue-gray'
+  | 'gray'
+  | 'brown'
+  | 'deep-orange'
+  | 'orange'
+  | 'amber'
+  | 'yellow'
+  | 'lime'
+  | 'light-green'
+  | 'green'
+  | 'teal'
+  | 'cyan'
+  | 'light-blue'
+  | 'blue'
+  | 'indigo'
+  | 'deep-purple'
+  | 'purple'
+  | 'pink'
+  | 'red';
 export type sizes = 'sm' | 'md' | 'lg';
 export type animation = {
   initial?: object;
@@ -56,6 +76,28 @@ export const propTypesColors: string[] = [
   'minimal',
   'success',
   'error',
+];
+
+export const propTypesExtraColors: string[] = [
+  'blue-gray',
+  'gray',
+  'brown',
+  'deep-orange',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'light-green',
+  'green',
+  'teal',
+  'cyan',
+  'light-blue',
+  'blue',
+  'indigo',
+  'deep-purple',
+  'purple',
+  'pink',
+  'red',
 ];
 
 export const propTypesVariants: string[] = [
