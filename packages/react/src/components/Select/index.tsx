@@ -16,7 +16,6 @@ import {
   autoUpdate,
   size as fuiSize,
   FloatingOverlay,
-  FloatingList,
 } from '@floating-ui/react';
 
 import { twMerge } from 'tailwind-merge';
@@ -39,6 +38,7 @@ import type {
   offset,
   dismiss,
   animate,
+  animation,
   lockScroll,
   labelProps,
   menuProps,
@@ -50,9 +50,6 @@ import type {
   fullWidth,
 } from '../../types/components/select';
 import {
-  propTypesVariant,
-  propTypesColor,
-  propTypesSize,
   propTypesLabel,
   propTypesError,
   propTypesSuccess,
@@ -61,8 +58,12 @@ import {
   propTypesOnChange,
   propTypesSelected,
   propTypesOffset,
-  propTypesDismiss,
   propTypesAnimate,
+  propTypesVariant,
+  propTypesAnimation,
+  propTypesSize,
+  propTypesColor,
+  propTypesDismiss,
   propTypesLockScroll,
   propTypesLabelProps,
   propTypesMenuProps,
@@ -94,6 +95,7 @@ export interface SelectProps
   offset?: offset;
   dismiss?: dismiss;
   animate?: animate;
+  animation?: animation;
   lockScroll?: lockScroll;
   labelProps?: labelProps;
   menuProps?: menuProps;
@@ -121,6 +123,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       offset,
       dismiss,
       animate,
+      animation,
       lockScroll,
       labelProps,
       menuProps,
@@ -153,6 +156,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     offset = offset ?? defaultProps?.offset;
     dismiss = dismiss ?? defaultProps?.dismiss;
     animate = animate ?? defaultProps?.animate;
+    animation = animation ?? defaultProps?.animation;
     lockScroll = lockScroll ?? defaultProps?.lockScroll;
     labelProps = labelProps ?? defaultProps?.labelProps;
     menuProps = menuProps ?? defaultProps?.menuProps;
@@ -169,13 +173,13 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     const prevActiveIndex = usePrevious<number | null>(activeIndex);
     const [state, setState] = React.useState<string>('close');
 
-    const { x, y, strategy, refs, floatingStyles, context } = useFloating({
+    const { x, y, strategy, refs, context } = useFloating({
       placement: 'bottom-start',
       open: open,
       onOpenChange: setIsOpen,
       whileElementsMounted: autoUpdate,
       middleware: [
-        fuiOffset(5),
+        fuiOffset(offset),
         flip({ padding: 10 }),
         fuiSize({
           apply({ rects, elements }: any) {
@@ -237,12 +241,24 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         listRef: listItemsRef,
         onChange: onChange || (() => {}),
         listItemsRef: listContentRef,
+        animate,
+        animation,
+        open,
       }),
-      [activeIndex, getItemProps, onChange, selectedIndex, context.dataRef],
+      [
+        activeIndex,
+        getItemProps,
+        onChange,
+        selectedIndex,
+        context.dataRef,
+        animate,
+        animation,
+        open,
+      ],
     );
 
     function handleClearMenuField() {
-      setSelectedIndex(null);
+      setSelectedIndex(0);
       setIsOpen(false);
       setActiveIndex(null);
     }
@@ -318,7 +334,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       clsx(
         objectsToString(base?.container),
         objectsToString(selectSize.container),
-        { [selectFullWidth]: fullWidth },
+        { [objectsToString(selectFullWidth)]: fullWidth },
         className,
       ),
     );
@@ -329,20 +345,20 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         objectsToString(selectSize?.select),
         objectsToString(selectVariant?.base.select),
         objectsToString(stateClasses.select),
-        { [objectsToString(selectVariant.base.selectWithIcon)]: icon },
         { [objectsToString(selectError)]: error },
         { [objectsToString(selectSuccess)]: success },
         { [objectsToString(selectColor)]: !error && !success },
         className,
       ),
     );
-
     const labelClasses = twMerge(
       clsx(
         objectsToString(base?.label),
-        objectsToString(selectSize.label),
         objectsToString(selectVariant.base.label),
         objectsToString(stateClasses.label),
+        objectsToString(selectSize.label.initial),
+        objectsToString(selectSize?.label.states[state]),
+        { [objectsToString(selectVariant.base.labelWithIcon)]: icon },
         { [labelError]: error },
         { [labelSuccess]: success },
         { [labelColor]: !error && !success },
@@ -360,8 +376,13 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       clsx(objectsToString(base?.menu), menuProps?.className),
     );
     const buttonContentClasses = clsx(
-      'absolute top-2/4 -translate-y-2/4 flex items-center',
-      variant === 'outlined' ? 'left-3 pt-0.5' : 'left-0 pt-3',
+      'absolute top-2/4 -translate-y-2/4 text-sm pb-px flex items-center pointer-events-none select-none',
+      variant === 'outlined'
+        ? 'left-3 pt-0.5'
+        : variant === 'default'
+        ? 'left-3'
+        : 'left-3 pt-3',
+      { 'left-8': icon },
     );
 
     const iconClasses = twMerge(
@@ -373,7 +394,103 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
     const cancelButtonClasses = clsx(
       'absolute top-2/4 -translate-y-2/4 flex items-center justify-center cursor-pointer w-4 h-4 rounded-full select-none hover:bg-blue-gray-100',
-      variant === 'outlined' ? 'right-12 pt-0.5' : 'right-0 pt-3',
+      variant === 'outlined'
+        ? 'right-12 pt-0.5'
+        : variant === 'default'
+        ? 'right-12'
+        : 'right-12 mt-1',
+    );
+
+    // create an instance of AnimatePresence because of types issues with children
+    const NewAnimatePresence: React.FC<NewAnimatePresenceProps> =
+      AnimatePresence;
+
+    const defaultAnimation = {
+      mount: {
+        clipPath: 'inset(0% 0% 0% 0% round 10px)',
+        type: 'spring',
+        bounce: 0,
+        duration: 0.5,
+        transition: {
+          staggerChildren: 0.9,
+          delayChildren: 0.3,
+          staggerDirection: -1,
+        },
+      },
+      default: {
+        clipPath: 'inset(0% 0% 0% 0%)',
+      },
+      unmount: {
+        clipPath: 'inset(10% 50% 90% 50% round 10px)',
+        type: 'spring',
+        bounce: 0,
+        duration: 0.5,
+      },
+    };
+
+    const appliedAnimation = merge(defaultAnimation, animation);
+
+    const selectMenu = (
+      <FloatingFocusManager context={context} modal={false}>
+        <motion.ul
+          {...getFloatingProps({
+            ...menuProps,
+            className: menuClasses,
+            ref: refs.setFloating,
+            style: {
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              overflow: 'auto',
+            },
+            role: 'listbox',
+            onPointerEnter(e) {
+              const onPointerEnter = menuProps?.onPointerEnter;
+
+              if (typeof onPointerEnter === 'function') {
+                onPointerEnter(e);
+                setControlledScrolling(false);
+              }
+              setControlledScrolling(false);
+            },
+
+            onPointerMove(e) {
+              const onPointerMove = menuProps?.onPointerMove;
+
+              if (typeof onPointerMove === 'function') {
+                onPointerMove(e);
+                setControlledScrolling(false);
+              }
+              setControlledScrolling(false);
+            },
+
+            onKeyDown(e) {
+              const onKeyDown = menuProps?.onKeyDown;
+
+              if (typeof onKeyDown === 'function') {
+                onKeyDown(e);
+                setControlledScrolling(true);
+              }
+              setControlledScrolling(true);
+            },
+          })}
+          initial="unmount"
+          exit="unmount"
+          animate={animate && open ? 'mount' : 'default'}
+          variants={appliedAnimation}
+        >
+          {React.Children.map(
+            children,
+            (child, index) =>
+              React.isValidElement(child) &&
+              React.cloneElement(child, {
+                ...child.props,
+                index: child.props?.index || index + 1,
+                id: `next-tailwind-select${index}`,
+              }),
+          )}
+        </motion.ul>
+      </FloatingFocusManager>
     );
 
     return (
@@ -389,7 +506,6 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               className: selectClasses,
               onKeyDown: (e: any) => {
                 if (e.key === 'Escape' || e.key === 'Backspace') {
-                  console.log('Backspace fired');
                   e.preventDefault();
                   setIsOpen(false);
                   setActiveIndex(null);
@@ -459,75 +575,55 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               )}
             </div>
           </button>
-          {icon && <span className={iconClasses}>{icon}</span>}
+          {icon &&
+            React.isValidElement(icon) &&
+            React.cloneElement(icon as React.ReactElement, {
+              className: iconClasses,
+            })}
           {label && (
             <label {...labelProps} className={labelClasses}>
               {label}
             </label>
           )}
-          {open && (
-            <FloatingFocusManager context={context} modal={false}>
-              <div
-                {...getFloatingProps({
-                  ...menuProps,
-                  className: menuClasses,
-                  ref: refs.setFloating,
-                  style: {
-                    position: strategy,
-                    top: y ?? 0,
-                    left: x ?? 0,
-                    overflow: 'auto',
-                  },
-                  role: 'listbox',
-                  onPointerEnter(e) {
-                    const onPointerEnter = menuProps?.onPointerEnter;
-
-                    if (typeof onPointerEnter === 'function') {
-                      onPointerEnter(e);
-                      setControlledScrolling(false);
-                    }
-                    setControlledScrolling(false);
-                  },
-
-                  onPointerMove(e) {
-                    const onPointerMove = menuProps?.onPointerMove;
-
-                    if (typeof onPointerMove === 'function') {
-                      onPointerMove(e);
-                      setControlledScrolling(false);
-                    }
-                    setControlledScrolling(false);
-                  },
-
-                  onKeyDown(e) {
-                    const onKeyDown = menuProps?.onKeyDown;
-
-                    if (typeof onKeyDown === 'function') {
-                      onKeyDown(e);
-                      setControlledScrolling(true);
-                    }
-                    setControlledScrolling(true);
-                  },
-                })}
-              >
-                {React.Children.map(
-                  children,
-                  (child, index) =>
-                    React.isValidElement(child) &&
-                    React.cloneElement(child, {
-                      ...child.props,
-                      index: child.props?.index || index + 1,
-                      id: `next-tailwind-select${index}`,
-                    }),
+          <NewAnimatePresence>
+            {open && (
+              <>
+                {lockScroll ? (
+                  <FloatingOverlay lockScroll>{selectMenu}</FloatingOverlay>
+                ) : (
+                  selectMenu
                 )}
-              </div>
-            </FloatingFocusManager>
-          )}
+              </>
+            )}
+          </NewAnimatePresence>
         </div>
       </SelectContextProvider>
     );
   },
 );
+
+Select.propTypes = {
+  variant: PropTypes.oneOf(propTypesVariant),
+  color: PropTypes.oneOf(propTypesColor),
+  size: PropTypes.oneOf(propTypesSize),
+  label: propTypesLabel,
+  error: propTypesError,
+  success: propTypesSuccess,
+  arrow: propTypesArrow,
+  value: propTypesValue,
+  onChange: propTypesOnChange,
+  selected: propTypesSelected,
+  offset: propTypesOffset,
+  dismiss: propTypesDismiss,
+  animate: propTypesAnimate,
+  lockScroll: propTypesLockScroll,
+  labelProps: propTypesLabelProps,
+  menuProps: propTypesMenuProps,
+  className: propTypesClassName,
+  disabled: propTypesDisabled,
+  name: propTypesName,
+  children: propTypesChildren,
+};
 
 Select.displayName = 'Select';
 

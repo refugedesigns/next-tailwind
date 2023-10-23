@@ -22,15 +22,18 @@ import type {
   name,
   children,
   fullWidth,
-  icon
+  icon,
 } from '../../../types/components/select';
 import {
   propTypesVariant,
   propTypesSize,
   propTypesColor,
 } from '../../../types/components/select';
+import selectDefautlClasses from './default';
+import selectFilledClasses from './filled';
 
 import selectOutlinedClasses from './outlined';
+import selectStandardClasses from './standard';
 
 export interface SelectSizeStylesType {
   container?: object;
@@ -84,7 +87,7 @@ export interface SelectVariantStylesType {
   base?: {
     select?: object;
     label?: object;
-    selectWithIcon?: object;
+    labelWithIcon?: object;
     icon?: object;
   };
   sizes?: {
@@ -96,7 +99,6 @@ export interface SelectVariantStylesType {
     label?: object;
   };
   states?: SelectStatesStylesType;
-  
 }
 
 export interface SelectStylesType {
@@ -175,7 +177,6 @@ export const selectClasses: SelectStylesType = {
     selected: undefined,
     offset: 5,
     dismiss: {},
-    animate: true,
     animation: {
       unmount: {},
       mount: {},
@@ -238,25 +239,27 @@ export const selectClasses: SelectStylesType = {
         left: 'left-0',
         fontWeight: 'font-normal',
         transition: 'transition-all',
+        color: 'text-blue-gray-500',
       },
       menu: {
         width: 'w-full',
         maxHeight: 'max-h-96',
         bg: 'bg-white',
         borderRadius: 'rounded-md',
-        border: 'border',
         fontFamily: 'font-sans',
         fontWeight: 'font-normal',
         fontSize: 'text-sm',
         overflow: 'overflow-auto',
         outline: 'focus:outline-none',
         color: 'text-blue-gray-500',
+        boxShadow: 'shadow-lg shadow-blue-gray-500/10',
+        border: 'border border-blue-gray-50',
+        py: 'py-2',
       },
       option: {
         initial: {
           pt: 'pt-[9px]',
-          px: 'px-3',
-          borderRadius: 'rounded-md',
+          px: 'p-3',
           lineHeight: 'leading-tight',
           cursor: 'cursor-pointer',
           userSelect: 'select-none',
@@ -267,6 +270,7 @@ export const selectClasses: SelectStylesType = {
           transition: 'transition-all',
           display: 'flex',
           alignItems: 'items-center',
+          space: 'space-x-1',
         },
         active: {
           bg: 'bg-blue-gray-50 bg-opacity-80',
@@ -282,6 +286,9 @@ export const selectClasses: SelectStylesType = {
     },
     variants: {
       outlined: selectOutlinedClasses,
+      standard: selectStandardClasses,
+      filled: selectFilledClasses,
+      default: selectDefautlClasses,
     },
     fullWidth: {
       container: {

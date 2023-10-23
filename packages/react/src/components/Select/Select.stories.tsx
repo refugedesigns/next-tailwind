@@ -1,8 +1,8 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { BiChevronDown } from 'react-icons/bi';
+import { BiChevronDown, BiHomeAlt2 } from 'react-icons/bi';
 
-import { Select, Option, SelectComponent } from '.';
+import { Select, Option } from '.';
 
 const option = ['Cat', 'Pig', 'Cow', 'Dog', 'Goat'];
 
@@ -44,6 +44,18 @@ const meta = {
       options: ['primary', 'secondary', 'minimal', 'error', 'success'],
       control: { type: 'radio' },
     },
+    onChange: {
+      control: {
+        type: null,
+        description: 'The onChange handler passed to the Select',
+      },
+    },
+    arrow: {
+      control: { type: null },
+    },
+    children: {
+      control: { type: null },
+    },
   },
 } satisfies Meta<typeof Select>;
 
@@ -52,10 +64,42 @@ type Story = StoryObj<typeof meta>;
 
 export const Outlined: Story = {};
 
+export const Standard: Story = {
+  args: {
+    variant: 'standard',
+  },
+};
+
+export const Filled: Story = {
+  args: {
+    variant: 'filled',
+  },
+};
+
+export const Default: Story = {
+  args: {
+    variant: 'default',
+  },
+};
+
+export const Error: Story = {
+  args: {
+    variant: 'default',
+    color: 'error',
+  },
+};
+
+export const Success: Story = {
+  args: {
+    variant: 'default',
+    color: 'success',
+  },
+};
+
 export const WithInitialValue: Story = {
   args: {
     value: 'Pig',
-    onChange: undefined
+    onChange: undefined,
   },
 };
 
@@ -71,5 +115,31 @@ export const WithSelectFunc: Story = {
         })
       );
     },
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    icon: <BiHomeAlt2 />,
+  },
+};
+
+export const LargeWithIcon: Story = {
+  args: {
+    icon: <BiHomeAlt2 />,
+    size: 'lg',
+    variant: 'standard'
+  },
+};
+
+export const FullWith: Story = {
+  args: {
+    fullWidth: true,
+  },
+};
+
+export const Animate: Story = {
+  args: {
+    animate: true,
   },
 };

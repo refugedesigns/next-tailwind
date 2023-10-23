@@ -1,14 +1,14 @@
 import type { SelectVariantStylesType } from '..';
-import outlinedClasses from './outlinedColors';
-import outlinedLabelClasses from './outlinedLabel';
-import outlinedLabelColorsClasses from './outlinedLabelColors';
+import standardClasses from './standardColors';
+import standardLabelClasses from './standardLabel';
+import standardLabelColorsClasses from './standardLabelColors';
 
-const selectOutlinedClasses: SelectVariantStylesType = {
+const selectStandardClasses: SelectVariantStylesType = {
   base: {
     select: {
-      borderWidth: 'border',
+      borderWidth: 'border-b',
       floated: {
-        borderWidth: 'border focus:border-2 focus:outline-none',
+        borderWidth: 'border-b focus:border-b-2 focus:outline-none',
       },
       bg: 'bg-transparent',
       height: 'h-full',
@@ -23,7 +23,7 @@ const selectOutlinedClasses: SelectVariantStylesType = {
       display: 'absolute',
       color: 'text-blue-gray-500',
     },
-    label: outlinedLabelClasses,
+    label: standardLabelClasses,
   },
   sizes: {
     md: {
@@ -66,33 +66,35 @@ const selectOutlinedClasses: SelectVariantStylesType = {
           lineHeight: 'leading-4.1 !left-9',
         },
         states: {
-          close: {},
+          close: {
+            translate: '-translate-y-1/4 top-2/4 scale-100',
+          },
           open: {
-            translate: '-translate-y-9 text-base top-1/2',
+            translate: '-translate-y-6',
           },
           withValue: {
-            translate: '-translate-y-9 text-base top-1/2',
+            translate: '-translate-y-6 bg-transparent',
           },
         },
       },
       icon: {
         width: 'w-5',
         height: 'h-5',
-        top: 'top-5',
+        top: 'top-1/2',
       },
     },
   },
   colors: {
-    select: outlinedClasses,
-    label: outlinedLabelColorsClasses,
+    select: standardClasses,
+    label: standardLabelColorsClasses,
   },
   states: {
     close: {
       select: {
-        border: 'border',
+        border: 'border-b rounded-none',
       },
       label: {
-        translate: '-translate-y-2/4 top-1/2 scale-100 text-base',
+        translate: '-translate-y-2/4 top-2/4 scale-100 text-base',
         fontSize: 'text-sm',
         disabled:
           'peer-disabled:cursor-not-allowed peer-disabled:text-blue-gray-400',
@@ -100,10 +102,10 @@ const selectOutlinedClasses: SelectVariantStylesType = {
     },
     open: {
       select: {
-        border: 'border-2',
+        border: 'border-b-2 rounded-none',
       },
       label: {
-        translate: '-translate-y-7  top-2/4 scale-75 text-base bg-white px-px',
+        translate: '-translate-y-7  top-2/4 scale-75 text-base px-px',
         fontSize: 'text-sm',
         disabled:
           'peer-disabled:cursor-not-allowed peer-disabled:text-blue-gray-400',
@@ -111,10 +113,10 @@ const selectOutlinedClasses: SelectVariantStylesType = {
     },
     withValue: {
       select: {
-        border: 'border-2',
+        border: 'border-b-2 rounded-none',
       },
       label: {
-        translate: '-translate-y-7 top-1/2 scale-75 text-base bg-white px-px',
+        translate: '-translate-y-7 top-1/2 scale-75 text-base  px-px',
         fontSize: 'text-sm',
         disabled:
           'peer-disabled:cursor-not-allowed peer-disabled:text-blue-gray-400',
@@ -123,4 +125,4 @@ const selectOutlinedClasses: SelectVariantStylesType = {
   },
 };
 
-export default selectOutlinedClasses;
+export default selectStandardClasses;

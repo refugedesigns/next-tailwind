@@ -1,9 +1,9 @@
 import type { SelectVariantStylesType } from '..';
-import outlinedClasses from './outlinedColors';
-import outlinedLabelClasses from './outlinedLabel';
-import outlinedLabelColorsClasses from './outlinedLabelColors';
+import defaultClasses from './defaultColors';
+import defaultLabelClasses from './defaultLabel';
+import defaultLabelColorsClasses from './defaultLabelColors';
 
-const selectOutlinedClasses: SelectVariantStylesType = {
+const selectDefautlClasses: SelectVariantStylesType = {
   base: {
     select: {
       borderWidth: 'border',
@@ -23,7 +23,7 @@ const selectOutlinedClasses: SelectVariantStylesType = {
       display: 'absolute',
       color: 'text-blue-gray-500',
     },
-    label: outlinedLabelClasses,
+    label: defaultLabelClasses,
   },
   sizes: {
     md: {
@@ -67,24 +67,20 @@ const selectOutlinedClasses: SelectVariantStylesType = {
         },
         states: {
           close: {},
-          open: {
-            translate: '-translate-y-9 text-base top-1/2',
-          },
-          withValue: {
-            translate: '-translate-y-9 text-base top-1/2',
-          },
+          open: {},
+          withValue: {},
         },
       },
       icon: {
         width: 'w-5',
         height: 'h-5',
-        top: 'top-5',
+        top: 'top-5'
       },
     },
   },
   colors: {
-    select: outlinedClasses,
-    label: outlinedLabelColorsClasses,
+    select: defaultClasses,
+    label: defaultLabelColorsClasses,
   },
   states: {
     close: {
@@ -103,7 +99,7 @@ const selectOutlinedClasses: SelectVariantStylesType = {
         border: 'border-2',
       },
       label: {
-        translate: '-translate-y-7  top-2/4 scale-75 text-base bg-white px-px',
+        translate: '-translate-y-1/2  top-2/4 scale-100',
         fontSize: 'text-sm',
         disabled:
           'peer-disabled:cursor-not-allowed peer-disabled:text-blue-gray-400',
@@ -114,7 +110,7 @@ const selectOutlinedClasses: SelectVariantStylesType = {
         border: 'border-2',
       },
       label: {
-        translate: '-translate-y-7 top-1/2 scale-75 text-base bg-white px-px',
+        display: 'hidden',
         fontSize: 'text-sm',
         disabled:
           'peer-disabled:cursor-not-allowed peer-disabled:text-blue-gray-400',
@@ -123,4 +119,4 @@ const selectOutlinedClasses: SelectVariantStylesType = {
   },
 };
 
-export default selectOutlinedClasses;
+export default selectDefautlClasses;

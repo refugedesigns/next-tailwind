@@ -17,7 +17,14 @@ import {
 
 import { useSelect } from './SelectContext';
 import { twMerge } from 'tailwind-merge';
+import { useTheme } from '../../context/theme';
+import clsx from 'clsx';
 import objectsToString from '../utils/objectsToString';
+import type { NewAnimatePresenceProps } from '../../types/generics';
+import { AnimatePresence, motion, stagger } from 'framer-motion';
+import merge from 'deepmerge';
+
+const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 
 export interface SelectOptionProps extends React.ComponentProps<'li'> {
   value?: value;
@@ -35,6 +42,11 @@ export const SelectOption = ({
   children,
   ...rest
 }: SelectOptionProps) => {
+  //1. init
+  const { select } = useTheme();
+  const { styles } = select;
+  const { base } = styles;
+
   //2. set @floating-ui/react
   const {
     selectedIndex,
@@ -47,6 +59,9 @@ export const SelectOption = ({
     getItemProps,
     dataRef,
     listItemsRef,
+    animate,
+    animation,
+    open,
   } = useSelect();
 
   index = listItemsRef.current.indexOf(value) + 1 || 0;
@@ -71,20 +86,55 @@ export const SelectOption = ({
   const isActive = activeIndex === index;
   const isSelected = selectedIndex === index;
 
+  // 3. set styles
+  const optionBaseClasses = objectsToString(base.option.initial);
+  const optionActiveClasses = objectsToString(base.option.active);
+  const optionDisabledClasses = objectsToString(base.option.disabled);
+  const classes = twMerge(
+    clsx(optionBaseClasses, {
+      [optionActiveClasses]: selectedIndex === index,
+      [optionDisabledClasses]: disabled,
+    }),
+    className ?? '',
+  );
+
+  // 4. set variants
+  const optionVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0,
+      filter: 'blur(20px)',
+      transition: {
+        duration: 0.2,
+      },
+    },
+    show: {
+      opacity: 1,
+      scale: 1,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.2,
+      },
+    },
+    noAnimation: {
+      opacity: 1,
+      scale: 1,
+      filter: 'blur(0px)',
+    },
+  };
+
+  const appliedAnimations = merge(optionVariants, animation);
+
   return (
-    <li
+    <motion.li
       {...rest}
       ref={(node) => (listRef.current[index!] = node)}
       role="option"
       aria-selected={isActive && isSelected}
       data-selected={isSelected}
       tabIndex={isActive ? 0 : -1}
-      className="text-left p-2 list-none flex"
+      className={classes}
       aria-disabled={disabled}
-      style={{
-        background: isActive ? 'cyan' : '',
-        fontWeight: isSelected ? 'bold' : 'normal',
-      }}
       {...getItemProps({
         onClick: (e: any) => {
           const onClick = rest?.onClick;
@@ -107,9 +157,12 @@ export const SelectOption = ({
           handleKeyDown(e);
         },
       })}
+      variants={appliedAnimations}
+      initial={animate && open && 'hidden'}
+      animate={animate && open && 'show'}
     >
       {children}
-    </li>
+    </motion.li>
   );
 };
 
