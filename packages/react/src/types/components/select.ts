@@ -1,23 +1,25 @@
 import PropTypes from 'prop-types';
 import type { ReactNode, ReactElement } from 'react';
-import { ContextData, useInteractions } from '@floating-ui/react';
+import type { ContextData } from '@floating-ui/react';
 import type React from 'react';
 import type {
   colors,
   dismissType,
   animation as animationType,
   offsetType,
+  sizes
 } from '../generics';
 
 import {
   propTypesColors,
-  propTypesAnimation,
+  propTypesAnimation as animation,
   propTypesDismissType,
   propTypesOffsetType,
+  propTypesVariants,
 } from '../generics';
 
 export type variant = 'standard' | 'filled' | 'outlined' | 'default';
-export type size = 'md' | 'lg';
+export type size = Omit<sizes, 'sm'>;
 export type color = colors;
 export type fullWidth = boolean;
 export type label = string;
@@ -59,15 +61,13 @@ export type contextValue = {
   onChange: (value: string) => void;
   getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => any;
   dataRef: ContextData;
+  animate?: boolean;
+  animation?: animationType;
+  open?: boolean;
 };
 
 // Javascript Types
-export const propTypesVariant: string[] = [
-  'standard',
-  'filled',
-  'outlined',
-  'default',
-];
+export const propTypesVariant: string[] = propTypesVariants;
 export const propTypesSize: string[] = ['md', 'lg'];
 export const propTypesFullWidth = PropTypes.bool;
 export const propTypesIcon = PropTypes.node;
@@ -87,9 +87,13 @@ export const propTypesContextValue: any = PropTypes.shape({
   onChange: PropTypes.func.isRequired,
   getItemProps: PropTypes.func.isRequired,
   dataRef: PropTypes.instanceOf(Object).isRequired,
+  animate: PropTypes.bool,
+  animation: PropTypes.instanceOf(Object),
+  open: PropTypes.bool,
 }).isRequired;
 export const propTypesColor = propTypesColors;
-export const propTypesAnimate = propTypesAnimation;
+export const propTypesAnimate = PropTypes.bool;
+export const propTypesAnimation = animation;
 export const propTypesOffset = propTypesOffsetType;
 export const propTypesDismiss = propTypesDismissType;
 export const propTypesLabel = PropTypes.string;

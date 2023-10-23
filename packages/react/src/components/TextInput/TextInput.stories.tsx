@@ -48,6 +48,12 @@ Default.args = {
   variant: 'default',
   color: 'minimal',
 };
+export const WithPlaceholder: Story = {};
+WithPlaceholder.args = {
+  variant: 'primary',
+  color: 'minimal',
+  placeholder: 'Type in your password',
+};
 
 export const WithIcon: Story = {};
 WithIcon.args = {

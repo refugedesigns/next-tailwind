@@ -1,14 +1,15 @@
 const outlinedLabelClasses = {
-  fontSize: 'text-sm peer-placeholder-shown:text-base',
+  fontSize: 'text-base peer-placeholder-shown:text-base peer-valid:text-base',
   floated: {
-    px: 'peer-focus:px-2',
+    px: 'peer-focus:',
     bg: 'bg-inherit peer-focus:bg-inherit  peer-focus:dark:!bg-inherit',
   },
   translate:
-    '-translate-y-2 peer-focus:-translate-y-4 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:top-2 peer-focus:top-3',
+    '-translate-y-3 peer-focus:-translate-y-3 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2',
   top: 'top-2',
   left: 'left-2.5',
-  scale: 'peer-focus:scale-75 peer-placeholder-shown:scale-100',
+  scale:
+    'peer-focus:scale-75 peer-placeholder-shown:scale-100 peer-valid:scale-75',
   zIndex: 'z-10',
   origin: 'origin-[0]',
   transitionDuration: 'duration-300',
