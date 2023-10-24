@@ -4,8 +4,6 @@ import { BiChevronDown, BiHomeAlt2 } from 'react-icons/bi';
 
 import { Select, Option } from '.';
 
-const option = ['Cat', 'Pig', 'Cow', 'Dog', 'Goat'];
-
 const options = [
   { name: 'Cat', age: 5 },
   { name: 'Pig', age: 2 },
@@ -128,7 +126,7 @@ export const LargeWithIcon: Story = {
   args: {
     icon: <BiHomeAlt2 />,
     size: 'lg',
-    variant: 'standard'
+    variant: 'standard',
   },
 };
 

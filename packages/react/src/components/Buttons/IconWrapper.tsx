@@ -22,8 +22,8 @@ interface IconWrapperProps extends React.ComponentPropsWithoutRef<'span'> {
 const IconWrapper = React.forwardRef<HTMLSpanElement, IconWrapperProps>(
   ({ children, className, size, ...rest }, ref) => {
     // 1. init
-    const { iconWrapperClasses } = useTheme();
-    const { valid, defaultProps, styles } = iconWrapperClasses;
+    const { iconWrapper } = useTheme();
+    const { valid, defaultProps, styles } = iconWrapper;
 
     // 2. set default props
     size = size ?? defaultProps?.size;

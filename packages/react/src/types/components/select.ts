@@ -7,7 +7,7 @@ import type {
   dismissType,
   animation as animationType,
   offsetType,
-  sizes
+  sizes,
 } from '../generics';
 
 import {
