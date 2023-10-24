@@ -509,7 +509,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                   e.preventDefault();
                   setIsOpen(false);
                   setActiveIndex(null);
-                  setSelectedIndex(null);
+                  setSelectedIndex(0);
                 }
               },
             })}

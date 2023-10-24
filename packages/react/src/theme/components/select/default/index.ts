@@ -74,7 +74,7 @@ const selectDefautlClasses: SelectVariantStylesType = {
       icon: {
         width: 'w-5',
         height: 'h-5',
-        top: 'top-5'
+        top: 'top-5',
       },
     },
   },

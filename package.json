@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:react": "pnpm exec --workspace packages/react pnpm run build",
-    "lint": "eslint --ignore-path .gitignore --quiet --no-error-on-unmatched-pattern packages/**/*{js,jsx,ts,tsx}",
+    "lint": "eslint --ignore-path .gitignore --quiet --fix --no-error-on-unmatched-pattern packages/**/*{js,jsx,ts,tsx}",
     "lint:watch": "esw --ext .js,.jsx,.jsx,.ts,.tsx packages --fix --ignore-path .gitignore --watch --clear"
   },
   "keywords": [],

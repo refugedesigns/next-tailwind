@@ -148,6 +148,7 @@ export interface SelectStylesType {
         active?: object;
         disabled?: object;
       };
+      cancelButton?: object
     };
     variants?: {
       standard?: SelectVariantStylesType;
@@ -283,6 +284,16 @@ export const selectClasses: SelectStylesType = {
           pointerEvents: 'pointer-events-none',
         },
       },
+      cancelButton: {
+        display: 'grid',
+        placeItems: 'place-items-center',
+        position: 'absolute',
+        top: 'top-1/2',
+        right: 'right-6',
+        pt: 'pt-px',
+        color: 'text-blue-gray-400',
+        transform: 'rotate-0 -translate-y-1/2',
+      }
     },
     variants: {
       outlined: selectOutlinedClasses,

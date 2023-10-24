@@ -6,11 +6,11 @@ import type {
   asType,
   textGradient,
   className,
-} from '../../../types/components/typographyClasses';
+} from '../../../types/components/typography';
 import {
   propTypesVariant,
   propTypesColor,
-} from '../../../types/components/typographyClasses';
+} from '../../../types/components/typography';
 
 export interface TypographyStylesType {
   defaultProps?: {
