@@ -21,7 +21,7 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     as: {
-      type: 'string'
+      type: 'string',
     },
   },
 } satisfies Meta<typeof Typography>;
