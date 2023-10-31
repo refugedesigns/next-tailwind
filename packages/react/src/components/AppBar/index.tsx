@@ -16,6 +16,7 @@ import type {
   fullWidth,
   className,
   children,
+  position,
 } from '../../types/components/appBar';
 import {
   propTypesVariant,
@@ -25,7 +26,10 @@ import {
   propTypesFullWidth,
   propTypesBlurred,
   propTypesShadow,
+  propTypesPosition,
 } from '../../types/components/appBar';
+
+import { MobileNavProps, MobileNav } from './MobileNav';
 
 export interface AppBarProps extends React.ComponentProps<'div'> {
   variant?: variant;
@@ -35,6 +39,7 @@ export interface AppBarProps extends React.ComponentProps<'div'> {
   fullWidth?: fullWidth;
   className?: className;
   children?: children;
+  position?: position;
 }
 
 export const AppBar = React.forwardRef<HTMLDivElement, AppBarProps>(
@@ -47,6 +52,7 @@ export const AppBar = React.forwardRef<HTMLDivElement, AppBarProps>(
       fullWidth,
       className,
       children,
+      position,
       ...rest
     },
     ref,
@@ -54,7 +60,7 @@ export const AppBar = React.forwardRef<HTMLDivElement, AppBarProps>(
     //1. init
     const { appBar } = useTheme();
     const { styles, valid, defaultProps } = appBar;
-    const { base, variants } = styles;
+    const { base, variants, position: positionStyles } = styles;
 
     //2. defaultProps
     variant = variant ?? defaultProps.variant;
@@ -63,6 +69,7 @@ export const AppBar = React.forwardRef<HTMLDivElement, AppBarProps>(
     blurred = blurred ?? defaultProps.blurred;
     fullWidth = fullWidth ?? defaultProps.fullWidth;
     className = className ?? defaultProps.className;
+    position = position ?? defaultProps.position;
 
     //3. classes
     const appBarRoot = clsx(objectsToString(base.appBar.initial), {
@@ -78,11 +85,16 @@ export const AppBar = React.forwardRef<HTMLDivElement, AppBarProps>(
         ],
       ),
     );
-
+    const appBarPosition = clsx(
+      objectsToString(
+        positionStyles[findMatch(valid.positions, position, 'fixed')],
+      ),
+    );
     const appBarClasses = twMerge(
       clsx(
         appBarRoot,
         appBarVariant,
+        appBarPosition,
         variant === 'outlined' && fullWidth && 'border-r-0 border-l-0',
       ),
       className,
@@ -97,4 +109,17 @@ export const AppBar = React.forwardRef<HTMLDivElement, AppBarProps>(
 
 AppBar.displayName = 'AppBar';
 
-export default AppBar;
+AppBar.propTypes = {
+  variant: PropTypes.oneOf(propTypesVariant),
+  color: PropTypes.oneOf(propTypesColor),
+  shadow: propTypesShadow,
+  blurred: propTypesBlurred,
+  fullWidth: propTypesFullWidth,
+  className: propTypesClassName,
+  children: propTypesChildren,
+  position: propTypesPosition,
+};
+
+export type { MobileNavProps };
+
+export default Object.assign(AppBar, { MobileNav });

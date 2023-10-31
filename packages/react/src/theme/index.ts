@@ -4,6 +4,7 @@ import input from './components/textInput';
 import selectClasses from './components/select';
 import typographyClasses from './components/Typography';
 import appBarClasses from './components/appBar';
+import stepperClasses from './components/stepper';
 
 const theme = {
   button,
@@ -12,6 +13,7 @@ const theme = {
   select: selectClasses,
   typography: typographyClasses,
   appBar: appBarClasses,
+  stepper: stepperClasses,
 };
 
 export * from './components/button';
@@ -20,5 +22,6 @@ export * from './components/textInput';
 export * from './components/select';
 export * from './components/Typography';
 export * from './components/appBar';
+export * from './components/stepper';
 
 export default theme;
