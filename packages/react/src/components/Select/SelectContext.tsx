@@ -1,7 +1,7 @@
 import React from 'react';
 
 // framer-motion
-import { useIsomorphicLayoutEffect, stagger, useAnimate } from 'framer-motion';
+import { useIsomorphicLayoutEffect } from 'framer-motion';
 
 // types
 import type { contextValue, children } from '../../types/components/select';
@@ -20,7 +20,9 @@ export interface SelectContextProviderProps {
 export const SelectContext = React.createContext<SelectContextType | null>(
   null,
 );
-SelectContext.displayName = 'MaterialTailwind.SelectContext';
+if (process.env.NODE_ENV !== 'production') {
+  SelectContext.displayName = 'SelectContext';
+}
 
 export function useSelect() {
   const context = React.useContext(SelectContext);
@@ -58,4 +60,6 @@ SelectContextProvider.propTypes = {
   children: propTypesChildren,
 };
 
-SelectContextProvider.displayName = 'MaterialTailwind.SelectContextProvider';
+if (process.env.NODE_ENV !== 'production') {
+  SelectContextProvider.displayName = 'SelectContextProvider';
+}

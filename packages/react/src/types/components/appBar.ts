@@ -6,6 +6,7 @@ import { propTypesColors, propTypesAnimation } from '../generics';
 
 //typescript types
 export type variant = 'filled' | 'gradient' | 'outlined';
+export type position = 'fixed' | 'absolute' | 'sticky' | 'static' | 'relative';
 export type color = 'transparent' | 'white' | colors;
 export type shadow = boolean;
 export type blurred = boolean;
@@ -17,6 +18,13 @@ export type animate = animation;
 
 // javascript prop-types
 export const propTypesVariant: any = ['filled', 'gradient', 'outlined'];
+export const propTypesPosition: any = [
+  'fixed',
+  'absolute',
+  'sticky',
+  'static',
+  'relative',
+];
 export const propTypesColor: any = ['transparent', 'white', ...propTypesColors];
 export const propTypesShadow: any = PropTypes.bool;
 export const propTypesBlurred: any = PropTypes.bool;

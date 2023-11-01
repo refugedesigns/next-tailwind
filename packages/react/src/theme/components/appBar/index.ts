@@ -5,10 +5,12 @@ import type {
   blurred,
   fullWidth,
   className,
+  position,
 } from '../../../types/components/appBar';
 import {
   propTypesVariant,
   propTypesColor,
+  propTypesPosition,
 } from '../../../types/components/appBar';
 import appBarFilledClasses from './appBarFilled';
 import appBarGradientClasses from './appBarGradient';
@@ -22,10 +24,12 @@ export interface AppBarProps {
     blurred?: blurred;
     fullWidth?: fullWidth;
     className?: className;
+    position?: position;
   };
   valid?: {
     variants?: string[];
     colors?: string[];
+    positions?: string[];
   };
   styles?: {
     base?: {
@@ -42,6 +46,13 @@ export interface AppBarProps {
       outlined?: typeof appBarOutlinedClasses;
       gradient?: typeof appBarGradientClasses;
     };
+    position?: {
+      fixed?: object;
+      absolute?: object;
+      sticky?: object;
+      static?: object;
+      relative?: object;
+    };
   };
 }
 
@@ -53,10 +64,12 @@ export const appBarClasses: AppBarProps = {
     blurred: true,
     fullWidth: false,
     className: '',
+    position: 'sticky',
   },
   valid: {
     variants: propTypesVariant,
     colors: propTypesColor,
+    positions: propTypesPosition,
   },
   styles: {
     base: {
@@ -84,16 +97,51 @@ export const appBarClasses: AppBarProps = {
         },
       },
       mobileAppBar: {
-        display: 'block md:hidden',
+        display: 'flex lg:hidden',
+        flexDirection: 'column',
         width: 'w-full',
         basis: 'basis-full',
         overflow: 'overflow-hidden',
+        py: 'py-',
       },
     },
     variants: {
       filled: appBarFilledClasses,
       outlined: appBarOutlinedClasses,
       gradient: appBarGradientClasses,
+    },
+    position: {
+      fixed: {
+        position: 'fixed',
+        zIndex: 'z-[99]',
+        top: 'top-0',
+        transform: 'translate-x-1/2',
+        right: 'right-1/2',
+        media: 'print:absolute',
+      },
+      absolute: {
+        position: 'absolute',
+        zIndex: 'z-[99]',
+        top: 'top-0',
+        transform: 'translate-x-1/2',
+        right: 'right-1/2',
+      },
+      sticky: {
+        position: 'sticky',
+        zIndex: 'z-[99]',
+        top: 'top-0',
+        width: 'mx-auto',
+      },
+      static: {
+        position: 'static',
+        zIndex: 'z-[99]',
+        width: 'mx-auto',
+      },
+      relative: {
+        position: 'relative',
+        zIndex: 'z-[99]',
+        width: 'mx-auto',
+      },
     },
   },
 };
