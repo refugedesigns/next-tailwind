@@ -5,6 +5,7 @@ import selectClasses from './components/select';
 import typographyClasses from './components/Typography';
 import appBarClasses from './components/appBar';
 import stepperClasses from './components/stepper';
+import SvgColorsClasses from './components/svgIcon';
 
 const theme = {
   button,
@@ -14,6 +15,7 @@ const theme = {
   typography: typographyClasses,
   appBar: appBarClasses,
   stepper: stepperClasses,
+  svg: SvgColorsClasses,
 };
 
 export * from './components/button';

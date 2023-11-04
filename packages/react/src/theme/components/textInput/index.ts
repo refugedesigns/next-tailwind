@@ -90,10 +90,11 @@ export interface InputStylesType {
       input?: object;
     };
     variants?: {
-      outlined: InputVariantStylesType;
-      standard: InputVariantStylesType;
-      static: InputVariantStylesType;
-      default: InputVariantStylesType;
+      outlined?: InputVariantStylesType;
+      standard?: InputVariantStylesType;
+      static?: InputVariantStylesType;
+      default?: InputVariantStylesType;
+      filled?: InputVariantStylesType;
     };
   };
 }
@@ -126,6 +127,7 @@ const inputClasses: InputStylesType = {
         bg: 'bg-inherit',
         display: 'block',
         boxSizing: 'box-border',
+        userSelect: 'select-none',
       },
       input: {
         peer: 'peer',
@@ -134,6 +136,7 @@ const inputClasses: InputStylesType = {
         focus: 'focus:outline-none',
         appearance: 'appearance-none',
         placeholder: 'placeholder-transparent',
+        userSelect: 'select-none',
       },
       label: {
         userSelect: 'select-none',

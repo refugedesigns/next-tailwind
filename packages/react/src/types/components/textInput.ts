@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
-import { colors } from 'types/generics';
+import type { colors } from '../generics';
 import Proptypes from 'prop-types';
 
-export type variant = 'outlined' | 'static' | 'standard' | 'default';
+export type variant = 'outlined' | 'static' | 'standard' | 'default' | 'filled';
 export type size = 'md' | 'lg';
 export type color = colors;
 export type fullWidth = boolean;
@@ -25,6 +25,7 @@ export const propTypesVariant: any = [
   'filled',
   'standard',
   'default',
+  'static'
 ];
 export const propTypesSize: any = ['md', 'lg'];
 export const propTypesColor: any = [

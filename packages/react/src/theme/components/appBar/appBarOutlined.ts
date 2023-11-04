@@ -9,23 +9,23 @@ const appBarOutlinedClasses: object = {
     color: 'text-blue-gray-500',
   },
   primary: {
-    background: 'border-2 border-blue-400',
+    background: 'border border-blue-400',
     color: 'text-blue-400',
   },
   secondary: {
-    background: 'bodder-2 border-blue-gray-600',
+    background: 'border border-blue-gray-600',
     color: 'text-blue-gray-600',
   },
   minimal: {
-    background: 'border-2 border-blue-gray-100',
+    background: 'border border-blue-gray-100',
     color: 'text-blue-gray-500',
   },
   error: {
-    background: 'border-2 border-red-400',
+    background: 'border border-red-400',
     color: 'text-red-400',
   },
   success: {
-    background: 'border-2 border-green-400',
+    background: 'border border-green-400',
     color: 'text-green-400',
   },
 };

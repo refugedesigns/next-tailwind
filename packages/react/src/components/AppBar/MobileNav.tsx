@@ -93,6 +93,7 @@ export const MobileNav = React.forwardRef<HTMLDivElement, MobileNavProps>(
         variantClasses,
         colorClasses,
         positionStylesClasses,
+        variant === 'outlined' && 'border-l-0 border-r-0',
         className,
       ),
     );
@@ -143,6 +144,7 @@ MobileNav.propTypes = {
   children: propTypesChildren,
   variant: PropTypes.oneOf(propTypesVariant),
   color: PropTypes.oneOf(propTypesColor),
+  position: PropTypes.oneOf(propTypesPosition),
 };
 
 export default MobileNav;

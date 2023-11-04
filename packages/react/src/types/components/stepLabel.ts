@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, ElementType } from 'react';
 import PropTypes from 'prop-types';
 
 // Typescript Types
@@ -7,6 +7,7 @@ export type className = string;
 export type error = boolean;
 export type icon = ReactNode;
 export type optional = ReactNode;
+export type stepIconComponent = ElementType<any>;
 export type iconProps = {
   [key: string]: any;
 };
@@ -15,10 +16,12 @@ export type labelProps = {
 };
 
 // Javascript Types
-export const children = PropTypes.node.isRequired;
-export const className = PropTypes.string;
-export const error = PropTypes.bool;
-export const icon = PropTypes.node;
-export const optional = PropTypes.node;
-export const iconProps = PropTypes.instanceOf(Object);
-export const labelProps = PropTypes.instanceOf(Object);
+export const propTypesChildren = PropTypes.node.isRequired;
+export const propTypesClassName = PropTypes.string;
+export const propTypesError = PropTypes.bool;
+export const propTypesIcon = PropTypes.node;
+export const propTypesOptional = PropTypes.node;
+export const propTypesStepIconComponent: any = PropTypes.elementType;
+
+export const propTypesIconProps = PropTypes.instanceOf(Object);
+export const propTypesLabelProps = PropTypes.instanceOf(Object);
