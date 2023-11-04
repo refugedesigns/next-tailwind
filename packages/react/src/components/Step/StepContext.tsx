@@ -52,9 +52,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 StepContextProvider.propTypes = {
   value: PropTypes.shape({
-    active: PropTypes.number,
+    active: PropTypes.bool,
     index: PropTypes.number,
-    last: PropTypes.number,
+    last: PropTypes.bool,
     expanded: PropTypes.bool,
     disabled: PropTypes.bool,
     completed: PropTypes.bool,

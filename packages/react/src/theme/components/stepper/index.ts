@@ -27,7 +27,12 @@ import type {
   iconProps,
   icon,
   optional,
+  stepIconComponent,
 } from '../../../types/components/stepLabel';
+
+import stepIconClasses from '../stepIcon';
+import stepContentClasses from '../stepContent';
+import stepButtonClasses from '../stepButton';
 
 export interface StepperStylesType {
   defaultProps?: {
@@ -55,6 +60,8 @@ export interface StepperStylesType {
     icon?: icon;
     error?: error;
     label?: optional;
+    optional?: optional;
+    stepIconComponent?: stepIconComponent;
   };
   valid?: {
     colors?: string[];
@@ -70,8 +77,16 @@ export interface StepperStylesType {
     };
     stepLabel?: {
       base?: object;
-      icon?: object;
-      label?: object;
+      iconContainer?: object;
+      label?: {
+        initial?: object;
+        states?: {
+          active?: object;
+          completed?: object;
+          disabled?: object;
+          error?: object;
+        };
+      };
       labelContainer?: object;
       error?: object;
       states?: {
@@ -80,7 +95,7 @@ export interface StepperStylesType {
         disabled?: object;
       };
     };
-    stepIcon?: {};
+    stepIcon?: typeof stepIconClasses;
     stepConnector?: {
       base?: object;
       connector?: {
@@ -96,8 +111,8 @@ export interface StepperStylesType {
         disabled?: object;
       };
     };
-    stepButton?: {};
-    stepContent?: {};
+    stepButton?: typeof stepButtonClasses;
+    stepContent?: typeof stepContentClasses;
     step?: {
       base?: object;
       orientation?: {
@@ -139,6 +154,8 @@ const stepperClasses: StepperStylesType = {
     icon: null,
     error: false,
     label: null,
+    optional: null,
+    stepIconComponent: null,
   },
   valid: {
     colors: propTypesColor,
@@ -197,6 +214,57 @@ const stepperClasses: StepperStylesType = {
         disabled: {},
       },
     },
+    stepLabel: {
+      base: {
+        display: 'flex',
+        alignItems: 'items-center',
+      },
+      iconContainer: {
+        display: 'flex',
+        flexShrink: 'flex-shrink-0',
+        paddingRight: 'pr-8',
+      },
+      label: {
+        initial: {
+          lineHeight: 'leading-3',
+          display: 'block',
+          transition: 'transition-all ease-in-out duration-200',
+          fontSize: 'text-base',
+          fontWeight: 'font-bold',
+          color: 'text-blue-gray-500',
+        },
+        states: {
+          active: {
+            color: 'text-blue-gray-800',
+            transition: 'transition-all ease-in-out duration-200',
+          },
+          completed: {
+            color: 'text-blue-gray-300',
+            transition: 'transition-all ease-in-out duration-200',
+          },
+          disabled: {
+            color: 'text-blue-gray-100',
+            transition: 'transition-all ease-in-out duration-200',
+          },
+          error: {
+            color: 'text-red-400',
+            transition: 'transition-all ease-in-out duration-200',
+          },
+        },
+      },
+      labelContainer: {
+        width: 'w-full',
+        color: 'text-blue-gray-500',
+      },
+      states: {
+        active: {},
+        completed: {},
+        disabled: {},
+      },
+    },
+    stepIcon: stepIconClasses,
+    stepContent: stepContentClasses,
+    stepButton: stepButtonClasses,
   },
 };
 

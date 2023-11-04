@@ -78,7 +78,7 @@ export const appBarClasses: AppBarProps = {
           display: 'block',
           width: 'w-full',
           maxWidth: 'max-w-screen-2xl',
-          borderRadius: 'rounded-xl',
+          borderRadius: 'rounded-3xl',
           py: 'py-4',
           px: 'px-8',
         },
@@ -102,7 +102,7 @@ export const appBarClasses: AppBarProps = {
         width: 'w-full',
         basis: 'basis-full',
         overflow: 'overflow-hidden',
-        py: 'py-',
+        py: 'border-l-0 border-r-0',
       },
     },
     variants: {

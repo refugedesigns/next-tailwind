@@ -157,8 +157,8 @@ export const TextInput = React.forwardRef<HTMLInputElement, InputProps>(
         objectsToString(inputSize.icon),
       ),
     );
-
     const asteriskClasses = clsx(objectsToString(base?.asterisk));
+    console.log(labelClasses);
     return (
       <div {...containerProps} className={containerClasses}>
         {icon && <div className={iconClasses}>{icon}</div>}
@@ -169,8 +169,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, InputProps>(
           {...rest}
         />
         <label {...labelProps} className={labelClasses}>
-          {label}{' '}
-          {rest.required ? <span className={asteriskClasses}>*</span> : ''}
+          {label} {rest.required && <span className={asteriskClasses} >*</span>}
         </label>
         {error && errorMessage && (
           <div className={textErrorMessage}>{errorMessage}</div>

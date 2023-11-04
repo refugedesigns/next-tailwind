@@ -50,7 +50,7 @@ Default.args = {
 };
 export const WithPlaceholder: Story = {};
 WithPlaceholder.args = {
-  variant: 'primary',
+  variant: 'outlined',
   color: 'minimal',
   placeholder: 'Type in your password',
 };
@@ -68,6 +68,7 @@ Large.args = {
 export const Required: Story = {};
 Required.args = {
   required: true,
+  variant: 'standard',
   color: 'error',
 };
 

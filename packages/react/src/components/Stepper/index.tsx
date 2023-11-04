@@ -80,7 +80,7 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
         ...child.props,
       });
     });
-
+    console.log(activeStep)
     const contextValue = React.useMemo(
       () => ({
         activeStep,
@@ -132,3 +132,5 @@ Stepper.propTypes = {
 };
 
 Stepper.displayName = 'Stepper';
+
+export default Stepper;

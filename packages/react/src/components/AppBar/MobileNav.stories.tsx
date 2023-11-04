@@ -81,6 +81,7 @@ export const Error: Story = {
 
 export const Outlined: Story = {
   args: {
+    fullWidth: true,
     variant: 'outlined',
     color: 'success',
   },
