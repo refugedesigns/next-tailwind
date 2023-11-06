@@ -169,7 +169,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, InputProps>(
           {...rest}
         />
         <label {...labelProps} className={labelClasses}>
-          {label} {rest.required && <span className={asteriskClasses} >*</span>}
+          {label} {rest.required && <span className={asteriskClasses}>*</span>}
         </label>
         {error && errorMessage && (
           <div className={textErrorMessage}>{errorMessage}</div>

@@ -1,5 +1,6 @@
 const outlinedLabelClasses = {
-  fontSize: 'text-lg peer-placeholder-shown:text-lg peer-valid:text-lg peer-required:text-sm peer-focus:peer-required:text-base peer-valid:peer-required:text-base',
+  fontSize:
+    'text-lg peer-placeholder-shown:text-lg peer-valid:text-lg peer-required:text-sm peer-focus:peer-required:text-base peer-valid:peer-required:text-base',
   floated: {
     px: 'peer-focus:px-2 peer-valid:px-2',
     bg: 'peer-valid:bg-white peer-focus:bg-white  peer-focus:dark:!bg-[#333333]',

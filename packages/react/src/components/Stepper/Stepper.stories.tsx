@@ -1,12 +1,15 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { BsArrowRight } from 'react-icons/bs';
-
+import { BsArrowRight, BsAlarm, BsAirplane } from 'react-icons/bs';
+import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import Stepper from '.';
-import Step from '../Step';
-import StepLabel from '../StepLabel';
+import Step, { StepProps } from '../Step';
+import StepLabel, { StepLabelProps } from '../StepLabel';
 import StepContent from '../StepContent';
-import StepButton from '../StepButton';
+import StepButton, { StepButtonProps } from '../StepButton';
+import type { StepIconProps } from '../StepIcon';
+import Typography from '../Typograhpy';
 
 const steps = [
   {
@@ -29,23 +32,60 @@ const steps = [
   },
 ];
 
-const globalActiveStep = 0;
+function CustomIconComponent(props: StepIconProps) {
+  const { active, completed, className } = props;
 
-type StepperProps = {
+  const icons: { [index: string]: React.ReactElement } = {
+    1: <BsArrowRight />,
+    2: <BsAirplane />,
+    3: <BsAlarm />,
+  };
+
+  return (
+    <div
+      className={twMerge(
+        clsx(
+          'text-blue-gray-50 flex w-8 h-8 rounded-full bg-blue-gray-500 dark:bg-blue-gray-100 dark:text-white justify-center items-center',
+          (active || completed) &&
+            'bg-gradient-to-r from-indigo-400 to-pink-400',
+        ),
+        className,
+      )}
+    >
+      {icons[String(props.icon)]}
+    </div>
+  );
+}
+
+interface StepperProps extends React.ComponentProps<typeof Stepper> {
   steps: {
     label: string;
     description: string;
   }[];
-  orientation: 'horizontal' | 'vertical';
-  color: 'primary' | 'secondary';
-};
+  orientation?: 'horizontal' | 'vertical';
+  color?: 'primary' | 'secondary';
+  stepProps?: StepProps;
+  stepLabelProps?: StepLabelProps;
+  activeStepProp?: number;
+  useStepButton?: boolean;
+  stepButtonProps?: StepButtonProps;
+}
 
 function StepperComponent({
   steps,
   orientation,
   color,
+  stepProps,
+  stepLabelProps,
+  activeStepProp,
+  useStepButton,
+  stepButtonProps,
+  ...props
 }: StepperProps): JSX.Element {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>(
+    {},
+  );
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -55,28 +95,78 @@ function StepperComponent({
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const totalSteps = () => {
+    return steps.length;
+  };
+
+  const handleStep = (step: number) => () => {
+    setActiveStep(step);
+    const newCompleted = completed;
+    newCompleted[activeStep] = true;
+    setCompleted(newCompleted);
+  };
+
   const handleReset = () => {
     setActiveStep(0);
   };
 
   return (
-    <Stepper activeStep={activeStep} orientation={orientation} color={color}>
-      {steps.map((step, index) => (
-        <Step
-          key={index + 5}
-          active={activeStep === index}
-          completed={activeStep > index}
-        >
-          <StepLabel>{step.label}</StepLabel>
-          <StepContent>
-            {step.description}
-            <button onClick={handleNext}>
-              Next
-            </button>
-          </StepContent>
-        </Step>
-      ))}
-    </Stepper>
+    <>
+      <Stepper
+        activeStep={activeStepProp ?? activeStep}
+        orientation={orientation}
+        color={color}
+        {...props}
+      >
+        {steps.map((step, index) => (
+          <Step
+            key={index + 5}
+            active={(activeStepProp ?? activeStep) === index}
+            completed={
+              useStepButton
+                ? completed[index]
+                : (activeStepProp ?? activeStep) > index
+            }
+            {...stepProps}
+          >
+            {useStepButton ? (
+              <StepButton {...stepButtonProps} onClick={handleStep(index)}>
+                {step.label}
+              </StepButton>
+            ) : (
+              <StepLabel
+                {...stepLabelProps}
+                optional={
+                  index === 2 &&
+                  !props.alternativeLabel && (
+                    <Typography variant="small">Last Step</Typography>
+                  )
+                }
+              >
+                {step.label}
+              </StepLabel>
+            )}
+            {orientation === 'vertical' && (
+              <StepContent>
+                {step.description}
+                <div className="flex justify-between pr-20 pt-2">
+                  <button onClick={handleBack}>Back</button>
+                  <button onClick={handleNext}>
+                    {index === steps.length - 1 ? 'Finish' : 'Next'}
+                  </button>
+                </div>
+              </StepContent>
+            )}
+          </Step>
+        ))}
+      </Stepper>
+      {activeStep === steps.length && (
+        <div className="ml-10">
+          <Typography>All steps completed - you&apos;re finished</Typography>
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -100,14 +190,61 @@ const meta = {
       options: ['primary', 'secondary', 'minimal', 'error', 'success'],
       control: { type: 'radio' },
     },
+    steps: {
+      control: {
+        disable: true,
+      },
+    },
+    orientation: {
+      options: ['vertical', 'horizontal'],
+      control: { type: 'radio' },
+    },
   },
-} satisfies Meta<typeof Stepper>;
+} satisfies Meta<typeof StepperComponent>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Vertical: Story = {
   args: {
     color: 'primary',
+  },
+};
+
+export const Horizontal: Story = {
+  args: {
+    color: 'primary',
+    orientation: 'horizontal',
+    className: 'max-w-3xl',
+  },
+};
+
+export const AlternativeLabel: Story = {
+  args: {
+    color: 'primary',
+    orientation: 'horizontal',
+    alternativeLabel: true,
+    className: 'max-w-4xl',
+  },
+};
+
+export const CustomIcons: Story = {
+  args: {
+    stepLabelProps: {
+      stepIconComponent: CustomIconComponent,
+    },
+    orientation: 'horizontal',
+    alternativeLabel: true,
+    className: 'max-w-4xl',
+    activeStepProp: 1,
+  },
+};
+
+export const UseStepButton: Story = {
+  args: {
+    useStepButton: true,
+    nonLinear: true,
+    orientation: 'horizontal',
+    className: 'max-w-4xl'
   },
 };

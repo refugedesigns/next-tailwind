@@ -1,257 +1,268 @@
 const stepIconColorsClasses = {
   primary: {
     initial: {
-      color: 'text-blue-300',
+      color: 'fill-blue-300 dark:fill-blue-100',
     },
     active: {
-      color: 'text-blue-400',
+      color: 'fill-blue-500 dark:fill-blue-50',
     },
     completed: {
-      color: 'text-blue-500',
+      color: 'fill-blue-600 dark:fill-blue-200',
     },
   },
   secondary: {
     initial: {
-      color: 'text-blue-gray-300',
+      color: 'fill-blue-gray-300 dark:fill-blue-gray-100',
     },
     active: {
-      color: 'text-blue-gray-400',
+      color: 'fill-blue-gray-400 dark:fill-blue-gray-50',
     },
     completed: {
-      color: 'text-blue-gray-500',
+      color: 'fill-blue-gray-500 dark:fill-blue-gray-200',
     },
   },
   error: {
     initial: {
-      color: 'text-red-300',
+      color: 'fill-red-300 dark:fill-red-100',
     },
     active: {
-      color: 'text-red-400',
+      color: 'fill-red-400 dark:fill-red-50',
     },
     completed: {
-      color: 'text-red-500',
+      color: 'fill-red-500 dark:fill-red-200',
     },
   },
   minimal: {
     initial: {
-      color: 'text-blue-gray-100',
+      color: 'fill-blue-gray-100 dark:fill-blue-gray-50',
     },
     active: {
-      color: 'text-blue-gray-200',
+      color: 'fill-blue-gray-200 dark:fill-blue-gray-100',
     },
     completed: {
-      color: 'text-blue-gray-300',
+      color: 'fill-blue-gray-300 dark:fill-blue-gray-200',
     },
   },
   success: {
     initial: {
-      color: 'text-green-300',
+      color: 'fill-green-300 dark:fill-green-100',
     },
     active: {
-      color: 'text-green-400',
+      color: 'fill-green-400 dark:fill-green-50',
     },
     completed: {
-      color: 'text-green-500',
+      color: 'fill-green-500 dark:fill-green-200',
     },
   },
   inherit: {
     initial: {
-      color: 'text-inherit',
+      color: 'fill-inherit',
     },
     active: {
-      color: 'text-inherit',
+      color: 'fill-inherit',
     },
     completed: {
-      color: 'text-inherit',
+      color: 'fill-inherit',
     },
   },
   current: {
     initial: {
-      color: 'text-current',
+      color: 'fill-current',
     },
     active: {
-      color: 'text-current',
+      color: 'fill-current',
     },
     completed: {
-      color: 'text-current',
+      color: 'fill-current',
     },
   },
   black: {
     initial: {
-      color: 'text-blue-gray-800',
+      color: 'fill-blue-gray-800 dark:text-blue-gray-50',
     },
     active: {
-      color: 'text-black',
+      color: 'fill-black dark:text-white',
     },
     completed: {
-      color: 'text-blue-gray-400',
+      color: 'fill-blue-gray-400 dark:text-blue-gray-100',
     },
   },
   white: {
     initial: {
-      color: 'text-blue-gray-50',
+      color: 'fill-blue-gray-50',
     },
     active: {
-      color: 'text-white',
+      color: 'fill-white',
     },
     completed: {
-      color: 'text-blue-gray-50',
+      color: 'fill-blue-gray-50',
     },
   },
   'blue-gray': {
     initial: {
-      color: 'text-blue-gray-300',
+      color: 'fill-blue-gray-300 dark:fill-blue-gray-100',
     },
     active: {
-      color: 'text-blue-gray-400',
+      color: 'fill-blue-gray-400 dark:fill-blue-gray-50',
     },
     completed: {
-      color: 'text-blue-gray-500',
+      color: 'fill-blue-gray-500 dark:fill-blue-gray-200',
     },
   },
   gray: {
     initial: {
-      color: 'text-gray-300',
+      color: 'fill-gray-300 dark:fill-gray-100',
     },
     active: {
-      color: 'text-gray-400',
+      color: 'fill-gray-400 dark:fill-gray-50',
     },
     completed: {
-      color: 'text-gray-500',
+      color: 'fill-gray-500 dark:fill-gray-200',
     },
   },
   brown: {
     initial: {
-      color: 'text-brown-300',
+      color: 'fill-brown-300 dark:fill-brown-100',
     },
     active: {
-      color: 'text-brown-400',
+      color: 'fill-brown-400 dark:fill-brown-50',
     },
     completed: {
-      color: 'text-brown-500',
+      color: 'fill-brown-500 dark:fill-brown-200',
     },
   },
   'deep-orange': {
     initial: {
-      color: 'text-deep-orange-300',
+      color: 'fill-deep-orange-300 dark:fill-deep-orange-100',
     },
     active: {
-      color: 'text-deep-orange-400',
+      color: 'fill-deep-orange-400 dark:fill-deep-orange-50',
     },
     completed: {
-      color: 'text-deep-orange-500',
+      color: 'fill-deep-orange-500 dark:fill-deep-orange-200',
     },
   },
   orange: {
     initial: {
-      color: 'text-orange-300',
+      color: 'fill-orange-300 dark:fill-orange-100',
     },
     active: {
-      color: 'text-orange-400',
+      color: 'fill-orange-400 dark:fill-orange-50',
     },
     completed: {
-      color: 'text-orange-500',
+      color: 'fill-orange-500 dark:fill-orange-200',
     },
   },
   'deep-purple': {
     initial: {
-      color: 'text-deep-purple-300',
+      color: 'fill-deep-purple-300 dark:fill-deep-purple-100',
     },
     active: {
-      color: 'text-deep-purple-400',
+      color: 'fill-deep-purple-400 dark:fill-deep-purple-50',
     },
     completed: {
-      color: 'text-deep-purple-500',
+      color: 'fill-deep-purple-500 dark:fill-deep-purple-200',
     },
   },
   purple: {
     initial: {
-      color: 'text-purple-300',
+      color: 'fill-purple-300 dark:fill-purple-100',
     },
     active: {
-      color: 'text-purple-400',
+      color: 'fill-purple-400 dark:fill-purple-50',
     },
     completed: {
-      color: 'text-purple-500',
+      color: 'fill-purple-500 dark:fill-purple-200',
     },
   },
   pink: {
     initial: {
-      color: 'text-pink-300',
+      color: 'fill-pink-300 dark:fill-pink-100',
     },
     active: {
-      color: 'text-pink-400',
+      color: 'fill-pink-400 dark:fill-pink-50',
     },
     completed: {
-      color: 'text-pink-500',
+      color: 'fill-pink-500 dark:fill-pink-200',
     },
   },
   red: {
     initial: {
-      color: 'text-red-300',
+      color: 'fill-red-300 dark:fill-red-100',
     },
     active: {
-      color: 'text-red-400',
+      color: 'fill-red-400 dark:fill-red-50',
     },
     completed: {
-      color: 'text-red-500',
+      color: 'fill-red-500 dark:fill-red-200',
     },
   },
   teal: {
     initial: {
-      color: 'text-teal-300',
+      color: 'fill-teal-300 dark:fill-teal-100',
     },
     active: {
-      color: 'text-teal-400',
+      color: 'fill-teal-400 dark:fill-teal-50',
     },
     completed: {
-      color: 'text-teal-500',
+      color: 'fill-teal-500 dark:fill-teal-200',
     },
   },
   cyan: {
     initial: {
-      color: 'text-cyan-300',
+      color: 'fill-cyan-300 dark:fill-cyan-100',
     },
     active: {
-      color: 'text-cyan-400',
+      color: 'fill-cyan-400 dark:fill-cyan-50',
     },
     completed: {
-      color: 'text-cyan-500',
+      color: 'fill-cyan-500 dark:fill-cyan-200',
     },
   },
   'light-blue': {
     initial: {
-      color: 'text-light-blue-300',
+      color: 'fill-light-blue-300 dark:fill-light-blue-100',
     },
     active: {
-      color: 'text-light-blue-400',
+      color: 'fill-light-blue-400 dark:fill-light-blue-50',
     },
     completed: {
-      color: 'text-light-blue-500',
+      color: 'fill-light-blue-500 dark:fill-light-blue-200',
     },
   },
   blue: {
     initial: {
-      color: 'text-blue-300',
+      color: 'fill-blue-300 dark:fill-blue-100',
     },
     active: {
-      color: 'text-blue-400',
+      color: 'fill-blue-400 dark:fill-blue-50',
     },
     completed: {
-      color: 'text-blue-500',
+      color: 'fill-blue-500 dark:fill-blue-200',
     },
   },
   indigo: {
     initial: {
-      color: 'text-indigo-300',
+      color: 'fill-indigo-300 dark:fill-indigo-100',
     },
     active: {
-      color: 'text-indigo-400',
+      color: 'fill-indigo-400 dark:fill-indigo-50',
     },
     completed: {
-      color: 'text-indigo-500',
+      color: 'fill-indigo-500 dark:fill-indigo-200',
     },
   },
+  green: {
+    initial: {
+      color: 'fill-green-300 dark:fill-green-200'
+    },
+    active: {
+      color: 'fill-green-400 dark:fill-green-50'
+    },
+    completed: {
+      color: 'fill-green-500 dark:fill-green-200'
+    }
+  }
 };
 
 export default stepIconColorsClasses;

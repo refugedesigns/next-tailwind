@@ -1,4 +1,4 @@
-const stepConnectorClasses: object = {
+const stepConnectorClasses = {
   primary: {
     color: 'border-blue-500',
   },
@@ -9,7 +9,7 @@ const stepConnectorClasses: object = {
     color: 'border-red-500',
   },
   minimal: {
-    color: 'border-blue-gray-50',
+    color: 'border-blue-gray-300 dark:border-blue-gray-50',
   },
   success: {
     color: 'border-green-500',

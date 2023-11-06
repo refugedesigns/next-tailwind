@@ -8,7 +8,10 @@ import type {
   orientation,
   color,
 } from '../../types/components/stepper';
-import { propTypesOrientation } from '../../types/components/stepper';
+import {
+  propTypesOrientation,
+  propTypesConnector,
+} from '../../types/components/stepper';
 
 export interface StepperContextType {
   activeStep: activeStep;
@@ -57,7 +60,7 @@ StepperContextProvider.propTypes = {
   value: PropTypes.shape({
     activeStep: PropTypes.number,
     alternativeLabel: PropTypes.bool,
-    connector: PropTypes.func,
+    connector: propTypesConnector,
     nonLinear: PropTypes.bool,
     orientation: PropTypes.oneOf(propTypesOrientation),
   }),

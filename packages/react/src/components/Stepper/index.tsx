@@ -27,6 +27,7 @@ import {
 } from '../../types/components/stepper';
 
 import { StepperContextProvider } from './StepperContext';
+import StepperConnector from '../StepConnector';
 import clsx from 'clsx';
 
 export interface StepperProps extends React.ComponentProps<'div'> {
@@ -40,12 +41,14 @@ export interface StepperProps extends React.ComponentProps<'div'> {
   color?: color;
 }
 
+const defaultConnector = <StepperConnector />;
+
 export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
   (
     {
       activeStep,
       alternativeLabel,
-      connector,
+      connector = defaultConnector,
       nonLinear,
       orientation,
       className,
@@ -76,11 +79,11 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
     const steps = childrenArray.map((child: React.ReactElement, index) => {
       return React.cloneElement(child, {
         index,
-        last: childrenArray.length - 1 === index,
+        last: index + 1 === childrenArray.length,
         ...child.props,
       });
     });
-    console.log(activeStep)
+
     const contextValue = React.useMemo(
       () => ({
         activeStep,

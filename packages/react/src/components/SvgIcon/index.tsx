@@ -79,7 +79,7 @@ const SvgIcon = React.forwardRef<HTMLOrSVGElement, SvgIconProps>(
     //3. set styles
     const rootClasses = objectsToString(base.initial);
     const sizeClasses = objectsToString(
-      sizes[findMatch(valid.sizes, size, 'sm')],
+      sizes[findMatch(valid.sizes, size, 'md')],
     );
     const colorClasses = objectsToString(
       colorStyles[findMatch(valid.colors, color, 'primary')],

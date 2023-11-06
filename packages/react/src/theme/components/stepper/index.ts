@@ -180,30 +180,31 @@ const stepperClasses: StepperStylesType = {
       base: {},
       orientation: {
         horizontal: {
-          px: 'px-8',
+          px: 'px-3',
         },
         vertical: {
           flex: 'flex-1',
           position: 'relative',
+          pb: '',
         },
       },
     },
     stepConnector: {
       base: {
-        flex: 'flex-1',
+        flex: 'flex-auto',
+        userSelect: 'select-none',
       },
       connector: {
         orientation: {
           horizontal: {
             display: 'block',
-            borderStyle: 'border',
             borderWidth: 'border-t',
           },
           vertical: {
             display: 'block',
-            borderStyle: 'border',
             borderWidth: 'border-l',
             minHeight: 'min-h-[24px]',
+            marginLeft: 'ml-[2.7rem]',
           },
         },
       },
@@ -222,7 +223,7 @@ const stepperClasses: StepperStylesType = {
       iconContainer: {
         display: 'flex',
         flexShrink: 'flex-shrink-0',
-        paddingRight: 'pr-8',
+        paddingRight: 'pr-2',
       },
       label: {
         initial: {
@@ -231,23 +232,24 @@ const stepperClasses: StepperStylesType = {
           transition: 'transition-all ease-in-out duration-200',
           fontSize: 'text-base',
           fontWeight: 'font-bold',
-          color: 'text-blue-gray-500',
+          color: 'text-blue-gray-500 dark:text-blue-gray-100',
+          userSelect: 'select-none',
         },
         states: {
           active: {
-            color: 'text-blue-gray-800',
+            color: 'text-blue-gray-800 dark:text-blue-gray-50',
             transition: 'transition-all ease-in-out duration-200',
           },
           completed: {
-            color: 'text-blue-gray-300',
+            color: 'text-blue-gray-300 dark:text-blue-gray-300',
             transition: 'transition-all ease-in-out duration-200',
           },
           disabled: {
-            color: 'text-blue-gray-100',
+            color: 'text-blue-gray-100 dark:text-blue-gray-200',
             transition: 'transition-all ease-in-out duration-200',
           },
           error: {
-            color: 'text-red-400',
+            color: 'text-red-400 dark:text-red-200',
             transition: 'transition-all ease-in-out duration-200',
           },
         },

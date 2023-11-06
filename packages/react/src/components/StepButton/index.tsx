@@ -24,7 +24,7 @@ import {
 } from '../../types/components/stepButton';
 import StepLabel from '../StepLabel';
 
-export interface StepButtonProps extends React.ComponentProps<'button'> {
+export interface StepButtonProps extends React.ComponentPropsWithRef<'button'> {
   icon?: icon;
   children?: children;
   className?: className;

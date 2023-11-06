@@ -25,7 +25,7 @@ export const propTypesVariant: any = [
   'filled',
   'standard',
   'default',
-  'static'
+  'static',
 ];
 export const propTypesSize: any = ['md', 'lg'];
 export const propTypesColor: any = [

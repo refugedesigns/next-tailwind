@@ -30,7 +30,7 @@ import { useStepperContext } from '../Stepper/StepperContext';
 import StepIcon from '../StepIcon';
 import clsx from 'clsx';
 
-export interface StepLabelProps extends React.ComponentProps<'div'> {
+export interface StepLabelProps extends React.ComponentPropsWithRef<'div'> {
   icon?: icon;
   iconProps?: iconProps;
   labelProps?: labelProps;
@@ -57,9 +57,6 @@ export const StepLabel = React.forwardRef<HTMLDivElement, StepLabelProps>(
     ref,
   ) => {
     //1. init
-    const [state, setState] = React.useState<
-      null | 'active' | 'completed' | 'disabled' | 'error'
-    >(null);
     const { stepper } = useTheme();
     const {
       defaultProps,
@@ -82,28 +79,12 @@ export const StepLabel = React.forwardRef<HTMLDivElement, StepLabelProps>(
       StepIconComponent = StepIcon;
     }
 
-    useIsomorphicLayoutEffect(() => {
-      if (active) {
-        setState('active');
-      } else if (completed) {
-        setState('completed');
-      } else if (disabled) {
-        setState('disabled');
-      } else if (error) {
-        setState('error');
-      }
-
-      // return () => {
-      //   setState(null);
-      // };
-    }, [active, completed, disabled, error]);
-
     //3. set styles
     const rootContainerClasses = twMerge(
       clsx(
         objectsToString(stepLabel.base),
         alternativeLabel && 'flex-col',
-        state === 'disabled' && 'cursor-default',
+        disabled && 'cursor-default',
         orientation === 'vertical' && 'text-left px-8',
       ),
       className,
@@ -111,7 +92,9 @@ export const StepLabel = React.forwardRef<HTMLDivElement, StepLabelProps>(
     const labelClasses = twMerge(
       clsx(
         objectsToString(stepLabel.label.initial),
-        // objectsToString(stepLabel.label.states[state]),
+        active && objectsToString(stepLabel.label.states.active),
+        completed && objectsToString(stepLabel.label.states.completed),
+        error && objectsToString(stepLabel.label.states.error),
         alternativeLabel && 'mt-[16px]',
       ),
       labelProps?.className,
