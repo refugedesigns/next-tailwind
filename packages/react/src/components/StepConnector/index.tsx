@@ -42,7 +42,9 @@ const StepperConnector = React.forwardRef<
 
   //2. styles
   const stepConnectorRootClasses = objectsToString(base);
-  const orientationClasses = objectsToString(connector[orientation]);
+  const orientationClasses = objectsToString(
+    connector.orientation[orientation],
+  );
   const stepConnectorColorClasses = objectsToString(
     connectorColor[findMatch(valid.colors, color, 'primary')],
   );
@@ -50,15 +52,14 @@ const StepperConnector = React.forwardRef<
     clsx(
       stepConnectorRootClasses,
       alternativeLabel &&
-        'absolute top-[8 + 4] left-[calc(50% + 20px)] right-[calc(50% + 20px)]',
+        'absolute bg-blue-200 w-[90%]  top-[15px] left-[calc(-46%)]',
       disabled && 'cursor-not-allowed',
     ),
     className,
   );
-
   const connectorClasses = twMerge(
     clsx(orientationClasses, stepConnectorColorClasses),
-    connectorProps.className,
+    connectorProps?.className,
   );
   return (
     <div ref={ref} {...rest} className={rootClasses}>

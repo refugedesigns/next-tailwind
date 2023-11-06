@@ -56,7 +56,6 @@ const stepButtonClasses: StepButtonPropTypes = {
         userSelect: 'select-none',
         verticalAlign: 'align-middle',
         color: 'text-inherit',
-        pointerEvents: 'pointer-events-none',
         disabled: 'disabled:pointer-events-none disabled:cursor-default',
         hover: 'hover:cursor-pointer',
       },

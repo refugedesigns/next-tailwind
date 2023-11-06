@@ -45,9 +45,14 @@ const stepContentClasses: stepContentPropType = {
     base: {
       initial: {
         marginLeft: 'ml-16',
-        paddingLeft: 'pl-20',
-        paddingRight: 'ml-10',
+        paddingLeft: 'pl-4',
+        paddingRight: 'ml-[2.7rem]',
+        pt: 'pt-2',
         borderLeft: 'border-l',
+        maxWidth: 'max-w-xs',
+        fontSize: 'text-sm',
+        lineHeight: 'leading-3.5',
+        textColor: 'text-blue-gray-500 dark:text-blue-gray-50',
       },
       colors: stepContentColorsClasses,
     },

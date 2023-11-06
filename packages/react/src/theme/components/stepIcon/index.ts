@@ -7,6 +7,7 @@ import type {
   color,
 } from '../../../types/components/stepIcon';
 import stepIconColorsClasses from './colors';
+import stepIconTextColorsClasses from './textColors';
 
 export interface StepIconPropType {
   defaultProps?: {
@@ -17,12 +18,18 @@ export interface StepIconPropType {
     className?: className;
     color?: color;
   };
+  valid?: {
+    colors?: string[]
+  }
   styles?: {
     base?: {
       initial?: object;
       colors?: typeof stepIconColorsClasses;
     };
-    text?: object;
+    text?: {
+      initial?: object;
+      colors?: typeof stepIconTextColorsClasses;
+    };
   };
 }
 
@@ -33,20 +40,26 @@ const stepIconClasses: StepIconPropType = {
     completed: false,
     icon: null,
     className: '',
-    color: 'primary',
+    color: 'inherit',
+  },
+  valid: {
+    colors: Object.keys(stepIconTextColorsClasses)
   },
   styles: {
     base: {
       initial: {
         display: 'block',
         transition: 'transition-colors',
+        my: 'my-1'
       },
       colors: stepIconColorsClasses,
     },
     text: {
-      fill: 'contrast-125',
-      fontSize: 'text-base',
-      fontFamily: 'font-sans',
+      initial: {
+        fontSize: 'text-base',
+        fontFamily: 'font-sans',
+      },
+      colors: stepIconTextColorsClasses,
     },
   },
 };

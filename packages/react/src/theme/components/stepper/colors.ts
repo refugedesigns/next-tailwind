@@ -1,4 +1,4 @@
-const stepperColorsClasses: object = {
+const stepperColorsClasses = {
   primary: {
     color: 'text-blue-500',
   },

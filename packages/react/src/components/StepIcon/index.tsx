@@ -27,6 +27,7 @@ import { useStepperContext } from '../Stepper/StepperContext';
 import CheckCircle from '../../svg-icons/CheckCircle';
 import Warning from '../../svg-icons/Warning';
 import clsx from 'clsx';
+import findMatch from '../utils/findMatch';
 
 export interface StepIconProps extends React.ComponentProps<typeof SvgIcon> {
   active?: active;
@@ -43,11 +44,11 @@ const StepIcon = React.forwardRef<SVGSVGElement, StepIconProps>(
     const { stepper } = useTheme();
     const {
       styles: {
-        stepIcon: { defaultProps, styles },
+        stepIcon: { defaultProps, styles, valid },
       },
     } = stepper;
     const { base, text } = styles;
-    const { color: colorContext } = useStepperContext();
+    const { color: colorContext, nonLinear } = useStepperContext();
 
     // 2. set default props
     active = active ?? defaultProps?.active;
@@ -63,7 +64,10 @@ const StepIcon = React.forwardRef<SVGSVGElement, StepIconProps>(
     const activeClasses = objectsToString(base.colors[color].active);
     const completedClasses = objectsToString(base.colors[color].completed);
     const errorClasses = objectsToString(base.colors.error.initial);
-    const textClasses = objectsToString(text);
+    const rootTextClasses = objectsToString(text.initial);
+    const textColorClasses = objectsToString(
+      text.colors[findMatch(valid.colors, color, 'primary')],
+    );
 
     if (typeof icon === 'number' || typeof icon === 'string') {
       let classes = clsx(rootClasses);
@@ -73,7 +77,7 @@ const StepIcon = React.forwardRef<SVGSVGElement, StepIconProps>(
         return <Warning ref={ref} {...rest} className={classes} />;
       }
 
-      if (completed) {
+      if (completed && !nonLinear) {
         classes = twMerge(classes, completedClasses, className);
         return <CheckCircle ref={ref} {...rest} className={classes} />;
       }
@@ -84,8 +88,10 @@ const StepIcon = React.forwardRef<SVGSVGElement, StepIconProps>(
       className,
     );
 
+    const textClasses = clsx(rootTextClasses, textColorClasses);
+
     return (
-      <SvgIcon ref={ref} className={classes} {...rest}>
+      <SvgIcon size="lg" ref={ref} className={classes} {...rest}>
         <circle cx="12" cy="12" r="12" />
         <text
           x="12"

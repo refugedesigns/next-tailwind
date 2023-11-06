@@ -31,7 +31,7 @@ import { useStepperContext } from '../Stepper/StepperContext';
 import StepContextProvider from './StepContext';
 import type { StepContextType } from './StepContext';
 
-export interface StepProps extends React.ComponentProps<'div'> {
+export interface StepProps extends React.ComponentPropsWithRef<'div'> {
   active?: active;
   children?: children;
   className?: className;
@@ -112,7 +112,11 @@ export const Step = React.forwardRef<HTMLDivElement, StepProps>(
     );
 
     const classes = twMerge(
-      clsx(stepRootClasses, stepOrientationClasses),
+      clsx(
+        stepRootClasses,
+        alternativeLabel && 'relative flex-1',
+        stepOrientationClasses,
+      ),
       className,
     );
 
