@@ -1,4 +1,4 @@
-const typographyColors: object = {
+const typographyColors = {
   inherit: {
     color: 'text-inherit',
   },
@@ -84,6 +84,10 @@ const typographyColors: object = {
     gradient: 'bg-gradient-to-tr from-pink-600 to-pink-400',
   },
   red: {
+    color: 'text-red-500',
+    gradient: 'bg-gradient-to-tr from-red-600 to-red-400',
+  },
+  error: {
     color: 'text-red-500',
     gradient: 'bg-gradient-to-tr from-red-600 to-red-400',
   },

@@ -57,7 +57,12 @@ const StepContent = React.forwardRef<HTMLDivElement, StepContentProps>(
       },
     } = stepper;
     const { orientation, color: colorContext } = useStepperContext();
-    const { active, last, expanded: expandedStep } = useStepContext();
+    const {
+      active,
+      last,
+      expanded: expandedStep,
+      isReactIcon,
+    } = useStepContext();
 
     //2. set defaultProps
     expanded = expanded ?? expandedStep ?? defaultProps?.expanded;
@@ -73,7 +78,12 @@ const StepContent = React.forwardRef<HTMLDivElement, StepContentProps>(
       styles.base.colors[findMatch(valid.colors, color, 'primary')],
     );
     const classes = twMerge(
-      clsx(rootClasses, colorClasses, last && 'border-l-0'),
+      clsx(
+        rootClasses,
+        colorClasses,
+        isReactIcon && 'ml-[3rem]',
+        last && 'border-l-0',
+      ),
       className,
     );
 

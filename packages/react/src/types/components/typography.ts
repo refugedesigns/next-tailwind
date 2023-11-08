@@ -2,7 +2,7 @@ import type { ReactNode, ElementType } from 'react';
 import PropTypes from 'prop-types';
 
 import type { extraColors } from '../generics';
-import { propTypesExtraColors } from '../generics';
+import { propTypesColors, propTypesExtraColors } from '../generics';
 
 export type variant =
   | 'h1'
@@ -39,6 +39,7 @@ export const propTypesColor: any = [
   'black',
   'white',
   ...propTypesExtraColors,
+  ...propTypesColors,
 ];
 
 export const propTypesAs: any = PropTypes.elementType;

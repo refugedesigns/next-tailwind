@@ -15,6 +15,7 @@ import type {
   expanded,
   index,
   last,
+  icon,
 } from '../../types/components/step';
 import {
   propTypesActive,
@@ -25,10 +26,12 @@ import {
   propTypesExpanded,
   propTypesIndex,
   propTypesLast,
+  propTypeIcon,
 } from '../../types/components/step';
 
 import { useStepperContext } from '../Stepper/StepperContext';
 import StepContextProvider from './StepContext';
+import { useStepContext } from './StepContext';
 import type { StepContextType } from './StepContext';
 
 export interface StepProps extends React.ComponentPropsWithRef<'div'> {
@@ -40,6 +43,7 @@ export interface StepProps extends React.ComponentPropsWithRef<'div'> {
   expanded?: expanded;
   index?: index;
   last?: last;
+  icon?: icon;
 }
 
 export const Step = React.forwardRef<HTMLDivElement, StepProps>(
@@ -53,6 +57,7 @@ export const Step = React.forwardRef<HTMLDivElement, StepProps>(
       expanded,
       index,
       last,
+      icon,
       ...rest
     },
     ref,
@@ -68,6 +73,7 @@ export const Step = React.forwardRef<HTMLDivElement, StepProps>(
     expanded = expanded ?? defaultProps.expanded;
     index = index ?? defaultProps.index;
     last = last ?? defaultProps.last;
+    icon = icon ?? defaultProps.icon;
 
     const {
       activeStep,

@@ -78,13 +78,13 @@ const SvgIconClasses: SvgIconType = {
         fontSize: 'text-base',
       },
       sm: {
-        fontSize: 'text-xl',
+        fontSize: 'text-lg',
       },
       md: {
-        fontSize: 'text-2xl',
+        fontSize: 'text-xl',
       },
       lg: {
-        fontSize: 'text-4xl',
+        fontSize: 'text-xl',
       },
     },
     color: SvgColorsClasses,

@@ -44,11 +44,11 @@ const preview: Preview = {
   },
   decorators: globalDecorators,
 
-  // globalTypes: {
-  //   darkMode: {
-  //     defaultValue: true, // Enable dark mode by default on all stories
-  //   },
-  // },
+  globalTypes: {
+    darkMode: {
+      defaultValue: true, // Enable dark mode by default on all stories
+    },
+  },
 };
 
 export default preview;

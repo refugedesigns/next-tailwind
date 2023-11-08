@@ -38,7 +38,7 @@ const StepperConnector = React.forwardRef<
   } = stepper;
 
   const { orientation, alternativeLabel, color } = useStepperContext();
-  const { active, completed, disabled } = useStepContext();
+  const { active, completed, disabled, isReactIcon } = useStepContext();
 
   //2. styles
   const stepConnectorRootClasses = objectsToString(base);
@@ -58,7 +58,11 @@ const StepperConnector = React.forwardRef<
     className,
   );
   const connectorClasses = twMerge(
-    clsx(orientationClasses, stepConnectorColorClasses),
+    clsx(
+      orientationClasses,
+      stepConnectorColorClasses,
+      isReactIcon && orientation === 'vertical' && 'ml-[3rem]',
+    ),
     connectorProps?.className,
   );
   return (

@@ -1,13 +1,13 @@
 const textColorsClasses = {
   primary: {
-    color: 'fill-blue-100',
+    color: 'fill-blue-100 dark:fill-blue-500',
   },
   secondary: {
     color: 'fill-blue-gray-50',
   },
   minimal: { color: 'fill-blue-gray-600' },
   error: {
-    color: 'fill-red-100',
+    color: 'fill-red-100 dark:fill-red-500',
   },
   success: {
     color: 'fill-green-600',
