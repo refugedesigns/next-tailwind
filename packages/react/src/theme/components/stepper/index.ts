@@ -198,11 +198,11 @@ const stepperClasses: StepperStylesType = {
         orientation: {
           horizontal: {
             display: 'block',
-            borderWidth: 'border-t',
+            borderWidth: 'border-t-2',
           },
           vertical: {
             display: 'block',
-            borderWidth: 'border-l',
+            borderWidth: 'border-l-2',
             minHeight: 'min-h-[24px]',
             marginLeft: 'ml-[2.7rem]',
           },

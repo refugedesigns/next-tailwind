@@ -48,7 +48,7 @@ const stepContentClasses: stepContentPropType = {
         paddingLeft: 'pl-4',
         paddingRight: 'ml-[2.7rem]',
         pt: 'pt-2',
-        borderLeft: 'border-l',
+        borderLeft: 'border-l-2',
         maxWidth: 'max-w-xs',
         fontSize: 'text-sm',
         lineHeight: 'leading-3.5',
