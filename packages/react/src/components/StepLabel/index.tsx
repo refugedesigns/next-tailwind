@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { twMerge } from 'tailwind-merge';
 import objectsToString from '../utils/objectsToString';
 import { useTheme } from '../../context/theme';
@@ -27,8 +27,10 @@ import {
 
 import { useStepContext } from '../Step/StepContext';
 import { useStepperContext } from '../Stepper/StepperContext';
+import StepContextProvider from '../Step/StepContext';
 import StepIcon from '../StepIcon';
 import clsx from 'clsx';
+import { IconContext } from 'react-icons/lib';
 
 export interface StepLabelProps extends React.ComponentPropsWithRef<'div'> {
   icon?: icon;
@@ -62,7 +64,17 @@ export const StepLabel = React.forwardRef<HTMLDivElement, StepLabelProps>(
       defaultProps,
       styles: { stepLabel },
     } = stepper;
-    const { active, completed, disabled, icon: iconContext } = useStepContext();
+    const {
+      active,
+      completed,
+      disabled,
+      icon: iconContext,
+      expanded,
+      last,
+      index,
+      isReactIcon,
+      handleIsReactIcon,
+    } = useStepContext();
     const { alternativeLabel, orientation } = useStepperContext();
 
     //2. set defaults
@@ -78,6 +90,12 @@ export const StepLabel = React.forwardRef<HTMLDivElement, StepLabelProps>(
     if (icon && !StepIconComponent) {
       StepIconComponent = StepIcon;
     }
+
+    React.useEffect(() => {
+      if (StepIconComponentProp && !isReactIcon) {
+        handleIsReactIcon();
+      }
+    }, [StepIconComponentProp, isReactIcon, handleIsReactIcon]);
 
     //3. set styles
     const rootContainerClasses = twMerge(
@@ -118,6 +136,7 @@ export const StepLabel = React.forwardRef<HTMLDivElement, StepLabelProps>(
               completed={completed}
               error={error}
               icon={icon}
+              className={StepIconComponentProp && 'w-8 h-8'}
               {...iconProps}
             />
           </div>

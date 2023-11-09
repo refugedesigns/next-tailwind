@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import type { ReactNode } from 'react';
+import type { ReactNode, ComponentClass, FunctionComponent } from 'react';
 
 import type {
   active,
@@ -19,6 +19,8 @@ export interface StepContextType {
   disabled: disabled;
   completed: completed;
   icon: ReactNode;
+  isReactIcon: boolean;
+  handleIsReactIcon: () => void;
 }
 
 export interface StepProviderProps {
@@ -26,7 +28,7 @@ export interface StepProviderProps {
   children: ReactNode;
 }
 
-export const StepContext = React.createContext<StepContextType | {}>({});
+export const StepContext = React.createContext<StepContextType | object>({});
 
 if (process.env.NODE_ENV !== 'production') {
   StepContext.displayName = 'StepContext';
@@ -43,7 +45,23 @@ export function useStepContext(): StepContextType {
 }
 
 const StepContextProvider = ({ value, children }: StepProviderProps) => {
-  return <StepContext.Provider value={value}>{children}</StepContext.Provider>;
+  const [isReactIcon, setIsReactIcon] = React.useState(false);
+
+  const handleIsReactIcon = () => {
+    setIsReactIcon(true);
+  };
+
+  return (
+    <StepContext.Provider
+      value={{
+        ...value,
+        isReactIcon,
+        handleIsReactIcon,
+      }}
+    >
+      {children}
+    </StepContext.Provider>
+  );
 };
 
 if (process.env.NODE_ENV !== 'production') {

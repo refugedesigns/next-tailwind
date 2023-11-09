@@ -19,8 +19,8 @@ export interface StepIconPropType {
     color?: color;
   };
   valid?: {
-    colors?: string[]
-  }
+    colors?: string[];
+  };
   styles?: {
     base?: {
       initial?: object;
@@ -43,14 +43,14 @@ const stepIconClasses: StepIconPropType = {
     color: 'inherit',
   },
   valid: {
-    colors: Object.keys(stepIconTextColorsClasses)
+    colors: Object.keys(stepIconTextColorsClasses),
   },
   styles: {
     base: {
       initial: {
         display: 'block',
         transition: 'transition-colors',
-        my: 'my-1'
+        my: 'my-1',
       },
       colors: stepIconColorsClasses,
     },

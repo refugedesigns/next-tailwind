@@ -45,7 +45,7 @@ function CustomIconComponent(props: StepIconProps) {
     <div
       className={twMerge(
         clsx(
-          'text-blue-gray-50 flex w-8 h-8 rounded-full bg-blue-gray-500 dark:bg-blue-gray-100 dark:text-white justify-center items-center',
+          'text-blue-gray-50 flex rounded-full my-1 bg-blue-gray-500 dark:bg-blue-gray-100 dark:text-white justify-center items-center',
           (active || completed) &&
             'bg-gradient-to-r from-indigo-400 to-pink-400',
         ),
@@ -69,6 +69,7 @@ interface StepperProps extends React.ComponentProps<typeof Stepper> {
   activeStepProp?: number;
   useStepButton?: boolean;
   stepButtonProps?: StepButtonProps;
+  isErrorStep?: boolean;
 }
 
 function StepperComponent({
@@ -80,6 +81,7 @@ function StepperComponent({
   activeStepProp,
   useStepButton,
   stepButtonProps,
+  isErrorStep,
   ...props
 }: StepperProps): JSX.Element {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -137,11 +139,19 @@ function StepperComponent({
               <StepLabel
                 {...stepLabelProps}
                 optional={
-                  index === 2 &&
-                  !props.alternativeLabel && (
+                  index === 2 && !props.alternativeLabel ? (
                     <Typography variant="small">Last Step</Typography>
-                  )
+                  ) : index === 1 && isErrorStep ? (
+                    <Typography
+                      color="error"
+                      className="dark:text-red-200"
+                      variant="small"
+                    >
+                      Alert message
+                    </Typography>
+                  ) : null
                 }
+                error={index === 1 && isErrorStep}
               >
                 {step.label}
               </StepLabel>
@@ -211,6 +221,26 @@ export const Vertical: Story = {
   },
 };
 
+export const SecondaryColor: Story = {
+  args: {
+    color: 'secondary',
+    orientation: 'horizontal',
+  },
+};
+
+export const SuccessColor: Story = {
+  args: {
+    color: 'success',
+    orientation: 'horizontal',
+  },
+};
+
+export const ErrorColor: Story = {
+  args: {
+    color: 'error',
+  },
+};
+
 export const Horizontal: Story = {
   args: {
     color: 'primary',
@@ -233,10 +263,9 @@ export const CustomIcons: Story = {
     stepLabelProps: {
       stepIconComponent: CustomIconComponent,
     },
-    orientation: 'horizontal',
-    alternativeLabel: true,
+    orientation: 'vertical',
+    // alternativeLabel: true,
     className: 'max-w-4xl',
-    activeStepProp: 1,
   },
 };
 
@@ -245,6 +274,14 @@ export const UseStepButton: Story = {
     useStepButton: true,
     nonLinear: true,
     orientation: 'horizontal',
-    className: 'max-w-4xl'
+    className: 'max-w-4xl',
+  },
+};
+
+export const ErrorStep: Story = {
+  args: {
+    isErrorStep: true,
+    orientation: 'horizontal',
+    className: 'max-w-4xl',
   },
 };

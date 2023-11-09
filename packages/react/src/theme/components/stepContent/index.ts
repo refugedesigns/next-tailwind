@@ -44,7 +44,7 @@ const stepContentClasses: stepContentPropType = {
   styles: {
     base: {
       initial: {
-        marginLeft: 'ml-16',
+        // marginLeft: 'ml-16',
         paddingLeft: 'pl-4',
         paddingRight: 'ml-[2.7rem]',
         pt: 'pt-2',
