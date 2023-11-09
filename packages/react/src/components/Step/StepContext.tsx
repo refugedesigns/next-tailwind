@@ -47,7 +47,6 @@ export function useStepContext(): StepContextType {
 const StepContextProvider = ({ value, children }: StepProviderProps) => {
   const [isReactIcon, setIsReactIcon] = React.useState(false);
 
-
   const handleIsReactIcon = () => {
     setIsReactIcon(true);
   };
