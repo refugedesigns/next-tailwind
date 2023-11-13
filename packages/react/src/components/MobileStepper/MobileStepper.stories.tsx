@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { HiMiniArrowLongRight, HiMiniArrowLongLeft } from 'react-icons/hi2';
 
 import MobileStepper from '.';
-import Button from '../Buttons/Button';
+import Button from '../Buttons';
 
 function MobileStepperComponent({ ...props }) {
   const [activeStep, setActiveStep] = React.useState(0);

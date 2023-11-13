@@ -9,7 +9,7 @@ import StepLabel, { StepLabelProps } from '../StepLabel';
 import StepContent from '../StepContent';
 import StepButton, { StepButtonProps } from '../StepButton';
 import type { StepIconProps } from '../StepIcon';
-import Typography from '../Typograhpy';
+import Typography from '../Typography';
 
 const steps = [
   {

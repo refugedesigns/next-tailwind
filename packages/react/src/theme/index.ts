@@ -7,6 +7,7 @@ import appBarClasses from './components/appBar';
 import stepperClasses from './components/stepper';
 import SvgColorsClasses from './components/svgIcon';
 import mobileStepperClasses from './components/mobileStepper';
+import menuClasses from './components/menu';
 
 const theme = {
   button,
@@ -18,6 +19,7 @@ const theme = {
   stepper: stepperClasses,
   svg: SvgColorsClasses,
   mobileStepper: mobileStepperClasses,
+  menu: menuClasses,
 };
 
 export * from './components/button';
@@ -29,5 +31,6 @@ export * from './components/appBar';
 export * from './components/stepper';
 export * from './components/svgIcon';
 export * from './components/mobileStepper';
+export * from './components/menu';
 
 export default theme;

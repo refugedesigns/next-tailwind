@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import AppBar from '.';
-import Typography from '../Typograhpy';
+import Typography from '../Typography';
 
 const navItems = [
   {

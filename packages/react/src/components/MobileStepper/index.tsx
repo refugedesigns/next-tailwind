@@ -123,7 +123,6 @@ export const MobileStepper = React.forwardRef<
       }
     }, [value, variant, controls]);
 
-
     return (
       <div className={containerClasses} ref={ref} {...rest}>
         {backButton}

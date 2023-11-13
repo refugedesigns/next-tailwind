@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MobileNav } from './MobileNav';
-import Typography from '../Typograhpy';
+import Typography from '../Typography';
 
 const meta = {
   title: 'Components/MobileNav',

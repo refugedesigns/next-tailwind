@@ -121,6 +121,7 @@ export const propTypesPlacements: string[] = [
   'left-end',
   'right-top',
   'right-bottom',
+  'right-start',
 ];
 
 export const propTypesDismissType = PropTypes.shape({
