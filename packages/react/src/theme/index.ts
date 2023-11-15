@@ -8,6 +8,7 @@ import stepperClasses from './components/stepper';
 import SvgColorsClasses from './components/svgIcon';
 import mobileStepperClasses from './components/mobileStepper';
 import menuClasses from './components/menu';
+import avatar from './components/avatar';
 
 const theme = {
   button,
@@ -20,6 +21,7 @@ const theme = {
   svg: SvgColorsClasses,
   mobileStepper: mobileStepperClasses,
   menu: menuClasses,
+  avatar,
 };
 
 export * from './components/button';
@@ -32,5 +34,6 @@ export * from './components/stepper';
 export * from './components/svgIcon';
 export * from './components/mobileStepper';
 export * from './components/menu';
+export * from './components/avatar';
 
 export default theme;
