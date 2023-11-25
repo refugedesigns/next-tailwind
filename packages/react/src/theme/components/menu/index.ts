@@ -5,7 +5,7 @@ import type {
   animate,
   lockScroll,
   divide,
-  allowHover
+  allowHover,
 } from '../../../types/components/menu';
 
 export interface MenuStylesType {
@@ -15,8 +15,8 @@ export interface MenuStylesType {
     offset?: offset;
     animate?: animate;
     lockScroll?: lockScroll;
-    divide?: divide
-    allowHover?: allowHover
+    divide?: divide;
+    allowHover?: allowHover;
   };
   styles?: {
     base?: {
@@ -39,7 +39,7 @@ const menuClasses: MenuStylesType = {
     animate: {},
     lockScroll: false,
     divide: false,
-    allowHover: false
+    allowHover: false,
   },
 
   styles: {

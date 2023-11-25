@@ -45,6 +45,7 @@ export interface AvatarStyleTypes {
       md?: object;
       lg?: object;
       xl?: object;
+      xxl?: object;
     };
     variants?: {
       circular?: object;
@@ -79,6 +80,7 @@ const avatarClasses: AvatarStyleTypes = {
     base: {
       mx: 'mx-auto',
       position: 'relative',
+      overflow: 'overflow-hidden',
     },
     colors: colors,
     sizes: {
@@ -99,8 +101,12 @@ const avatarClasses: AvatarStyleTypes = {
         height: 'h-12',
       },
       xl: {
-        width: 'w-14',
-        height: 'h-14',
+        width: 'w-16',
+        height: 'h-16',
+      },
+      xxl: {
+        width: 'w-24',
+        height: 'h-24',
       },
     },
     variants: {

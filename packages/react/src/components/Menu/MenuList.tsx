@@ -119,33 +119,33 @@ export const MenuList = React.forwardRef<HTMLUListElement, MenuListProps>(
     return (
       <FloatingPortal>
         <NewAnimatePresence>
-        {open && (
-          <>
-            {lockScroll ? (
-              <FloatingOverlay lockScroll>
+          {open && (
+            <>
+              {lockScroll ? (
+                <FloatingOverlay lockScroll>
+                  <FloatingFocusManager
+                    context={context}
+                    modal={!nested}
+                    initialFocus={nested ? -1 : 0}
+                    returnFocus={!nested}
+                    visuallyHiddenDismiss
+                  >
+                    {menuComponent}
+                  </FloatingFocusManager>
+                </FloatingOverlay>
+              ) : (
                 <FloatingFocusManager
                   context={context}
-                  modal={!nested}
+                  modal={false}
                   initialFocus={nested ? -1 : 0}
                   returnFocus={!nested}
                   visuallyHiddenDismiss
                 >
                   {menuComponent}
                 </FloatingFocusManager>
-              </FloatingOverlay>
-            ) : (
-              <FloatingFocusManager
-                context={context}
-                modal={false}
-                initialFocus={nested ? -1 : 0}
-                returnFocus={!nested}
-                visuallyHiddenDismiss
-              >
-                {menuComponent}
-              </FloatingFocusManager>
-            )}
-          </>
-        )}
+              )}
+            </>
+          )}
         </NewAnimatePresence>
       </FloatingPortal>
     );

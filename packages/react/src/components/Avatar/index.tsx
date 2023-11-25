@@ -41,7 +41,10 @@ export interface AvatarProps {
   className?: className;
 }
 
-const Avatar = React.forwardRef<HTMLImageElement, AvatarProps & ImageProps>(
+export const Avatar = React.forwardRef<
+  HTMLImageElement,
+  AvatarProps & ImageProps
+>(
   (
     {
       src,
@@ -113,7 +116,7 @@ const Avatar = React.forwardRef<HTMLImageElement, AvatarProps & ImageProps>(
           height="0"
           width="0"
           sizes="100vw"
-          className="w-full h-auto object-contain mx-auto"
+          className="w-full h-auto object-cover mx-auto"
         />
       </div>
     );
