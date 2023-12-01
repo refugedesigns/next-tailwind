@@ -4,18 +4,19 @@ import type {
   variant,
   size,
   withBorder,
-  active,
-  activePlacement,
   className,
   containerProps,
+  children,
+  borderColor,
 } from '../../../types/components/avatar';
+import borderColors from './borderColors';
 import colors from './colors';
 
 import {
   propTypesColor,
-  propTypesActivePlacement,
   propTypesSize,
   propTypesVariant,
+  propTypesBorderColor,
 } from '../../../types/components/avatar';
 
 export interface AvatarStyleTypes {
@@ -25,19 +26,20 @@ export interface AvatarStyleTypes {
     variant?: variant;
     size?: size;
     withBorder?: withBorder;
-    active?: active;
-    activePlacement?: activePlacement;
+    borderColor?: borderColor;
     className?: className;
     containerProps?: containerProps;
+    children?: children;
   };
   valid?: {
-    colors?: string[];
+    borderColors?: string[];
     sizes?: string[];
     variants?: string[];
-    placements?: string[];
+    color?: string[];
   };
   styles?: {
     base?: object;
+    borderColors?: typeof borderColors;
     colors?: typeof colors;
     sizes?: {
       xs?: object;
@@ -52,8 +54,6 @@ export interface AvatarStyleTypes {
       rounded?: object;
       square?: object;
     };
-    active?: object;
-    activePlacement?: object;
     withBorder?: object;
   };
 }
@@ -65,16 +65,16 @@ const avatarClasses: AvatarStyleTypes = {
     variant: 'circular',
     size: 'md',
     withBorder: false,
-    active: false,
-    activePlacement: 'bottom-right',
+    borderColor: 'primary',
     className: '',
     containerProps: {},
+    children: null,
   },
   valid: {
-    colors: propTypesColor,
+    borderColors: propTypesBorderColor,
+    color: propTypesColor,
     sizes: propTypesSize,
     variants: propTypesVariant,
-    placements: propTypesActivePlacement,
   },
   styles: {
     base: {
@@ -82,6 +82,7 @@ const avatarClasses: AvatarStyleTypes = {
       position: 'relative',
       overflow: 'overflow-hidden',
     },
+    borderColors: borderColors,
     colors: colors,
     sizes: {
       xs: {
@@ -118,31 +119,6 @@ const avatarClasses: AvatarStyleTypes = {
       },
       square: {
         borderRadius: 'rounded-none',
-      },
-    },
-    active: {
-      position: 'absolute',
-      width: 'w-2',
-      height: 'h-2',
-      borderRadius: 'rounded-full',
-      bg: 'bg-green-500',
-    },
-    activePlacement: {
-      'bottom-right': {
-        bottom: 'bottom-0',
-        right: 'right-0',
-      },
-      'bottom-left': {
-        bottom: 'bottom-0',
-        left: 'left-0',
-      },
-      'top-right': {
-        top: 'top-0',
-        right: 'right-0',
-      },
-      'top-left': {
-        top: 'top-0',
-        left: 'left-0',
       },
     },
   },

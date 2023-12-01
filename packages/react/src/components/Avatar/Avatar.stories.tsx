@@ -1,5 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { AiFillAppstore } from 'react-icons/ai';
+import { GrBar } from 'react-icons/gr';
 import Avatar from '.';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -51,6 +53,57 @@ export const Variants: Story = {
         <Avatar {...args} variant="circular" />
         <Avatar {...args} variant="rounded" />
         <Avatar {...args} variant="square" />
+      </div>
+    );
+  },
+};
+
+export const WithBorder: Story = {
+  args: {
+    src: 'https://i.pravatar.cc/300?img=1',
+    alt: 'Avatar',
+    size: 'xl',
+    withBorder: true,
+  },
+  render: (args) => {
+    return (
+      <div className="flex max-w-[24rem] items-end">
+        <Avatar {...args} size="xs" />
+        <Avatar {...args} color="secondary" size="sm" />
+        <Avatar {...args} color="success" size="md" />
+        <Avatar {...args} color="error" size="lg" />
+        <Avatar {...args} color="teal" size="xl" />
+        <Avatar {...args} color="blue-gray" size="xxl" />
+      </div>
+    );
+  },
+};
+
+export const WithCildren: Story = {
+  args: {
+    size: 'xl',
+  },
+  render: (args) => {
+    return (
+      <div className="flex max-w-[20rem] items-end">
+        <Avatar {...args} size="md">
+          R
+        </Avatar>
+        <Avatar {...args} color="secondary" size="md">
+          <AiFillAppstore />
+        </Avatar>
+        <Avatar {...args} color="success" size="md">
+          <GrBar />
+        </Avatar>
+        <Avatar {...args} color="error" size="md">
+          R
+        </Avatar>
+        <Avatar {...args} color="teal" size="md">
+          F
+        </Avatar>
+        <Avatar {...args} color="blue-gray" size="md">
+          H
+        </Avatar>
       </div>
     );
   },

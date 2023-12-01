@@ -1,108 +1,128 @@
-const avatarColorsClasses = {
-  primary: {
-    border: 'border-2 border-blue-500 dark:border-blue-300',
-    padding: 'p-1',
-  },
-  secondary: {
-    border: 'border-2 border-blue-gray-500 dark:border-blue-gray-300',
-    padding: 'p-1',
-  },
-  error: {
-    border: 'border-2 border-red-500 dark:border-red-300',
-    padding: 'p-1',
-  },
-  success: {
-    border: 'border-2 border-green-500 dark:border-green-300',
-    padding: 'p-1',
-  },
+const avatarColorClasses = {
   inherit: {
-    border: 'border-2 border-inherit',
-    padding: 'p-1',
+    bg: 'bg-inherit',
+    color: 'text-white',
   },
   current: {
-    border: 'border-2 border-current',
-    padding: 'p-1',
+    bg: 'bg-current',
+    color: 'text-white',
   },
-  black: {
-    border: 'border-2 border-black',
-    padding: 'p-1',
+  transparent: {
+    bg: 'bg-transparent',
+    color: 'text-white',
   },
   white: {
-    border: 'border-2 border-white',
-    padding: 'p-1',
+    bg: 'bg-white',
+    color: 'text-blue-gray-900',
+  },
+  black: {
+    bg: 'bg-black',
+    color: 'text-white',
   },
   'blue-gray': {
-    border: 'border-2 border-blue-gray-500 dark:border-blue-gray-300',
-    padding: 'p-1',
+    bg: 'bg-blue-gray-500 dark:bg-blue-gray-300',
+    color: 'text-white',
   },
   gray: {
-    border: 'border-2 border-gray-500 dark:border-gray-300',
-    padding: 'p-1',
+    bg: 'bg-gray-500 dark:bg-gray-300',
+    color: 'text-white',
   },
   brown: {
-    border: 'border-2 border-brown-500 dark:border-brown-300',
-    padding: 'p-1',
+    bg: 'bg-brown-500 dark:bg-brown-300',
+    color: 'text-white',
   },
   'deep-orange': {
-    border: 'border-2 border-deep-orange-500 dark:border-deep-orange-300',
-    padding: 'p-1',
+    bg: 'bg-deep-orange-500 dark:bg-deep-orange-300',
+    color: 'text-white',
   },
   orange: {
-    border: 'border-2 border-orange-500 dark:border-orange-300',
-    padding: 'p-1',
+    bg: 'bg-orange-500 dark:bg-orange-300',
+    color: 'text-white',
   },
-  'light-green': {
-    border: 'border-2 border-light-green-500 dark:border-light-green-300',
-    padding: 'p-1',
-  },
-  green: {
-    border: 'border-2 border-green-500 dark:border-green-300',
-    padding: 'p-1',
-  },
-  'light-blue': {
-    border: 'border-2 border-light-blue-500 dark:border-light-blue-300',
-    padding: 'p-1',
-  },
-  blue: {
-    border: 'border-2 border-blue-500 dark:border-blue-300',
-    padding: 'p-1',
-  },
-  indigo: {
-    border: 'border-2 border-indigo-500 dark:border-indigo-300',
-    padding: 'p-1',
-  },
-  'deep-purple': {
-    border: 'border-2 border-deep-purple-500 dark:border-deep-purple-300',
-    padding: 'p-1',
-  },
-  purple: {
-    border: 'border-2 border-purple-500 dark:border-purple-300',
-    padding: 'p-1',
-  },
-  pink: {
-    border: 'border-2 border-pink-500 dark:border-pink-300',
-    padding: 'p-1',
-  },
-  red: {
-    border: 'border-2 border-red-500 dark:border-red-300',
-    padding: 'p-1',
-  },
-  teal: {
-    border: 'border-2 border-teal-500 dark:border-teal-300',
-    padding: 'p-1',
-  },
-  'light-yellow': {
-    border: 'border-2 border-light-yellow-500 dark:border-light-yellow-300',
-    padding: 'p-1',
+  amber: {
+    bg: 'bg-amber-500 dark:bg-amber-300',
+    color: 'text-white',
   },
   yellow: {
-    border: 'border-2 border-yellow-500 dark:border-yellow-300',
-    padding: 'p-1',
+    bg: 'bg-yellow-400 dark:bg-yellow-200',
+    color: 'text-white',
+  },
+  lime: {
+    bg: 'bg-lime-500 dark:bg-lime-300',
+    color: 'text-white',
+  },
+  'light-green': {
+    bg: 'bg-light-green-500 dark:bg-light-green-300',
+    color: 'text-white',
+  },
+  green: {
+    bg: 'bg-green-500 dark:bg-green-300',
+    color: 'text-white',
+  },
+  'light-blue': {
+    bg: 'bg-light-blue-500 dark:bg-light-blue-300',
+    color: 'text-white',
+  },
+  blue: {
+    bg: 'bg-blue-500 dark:bg-blue-300',
+    color: 'text-white',
+  },
+  indigo: {
+    bg: 'bg-indigo-500 dark:bg-indigo-300',
+    color: 'text-white',
+  },
+  'deep-purple': {
+    bg: 'bg-deep-purple-500 dark:bg-deep-purple-300',
+    color: 'text-white',
+  },
+  purple: {
+    bg: 'bg-purple-500 dark:bg-purple-300',
+    color: 'text-white',
+  },
+  pink: {
+    bg: 'bg-pink-500 dark:bg-pink-300',
+    color: 'text-white',
+  },
+  red: {
+    bg: 'bg-red-500 dark:bg-red-300',
+    color: 'text-white',
+  },
+  'deep-red': {
+    bg: 'bg-deep-red-500 dark:bg-deep-red-300',
+    color: 'text-white',
+  },
+  'light-teal': {
+    bg: 'bg-light-teal-500 dark:bg-light-teal-300',
+    color: 'text-white',
+  },
+  teal: {
+    bg: 'bg-teal-500 dark:bg-teal-300',
+    color: 'text-white',
+  },
+  cyan: {
+    bg: 'bg-cyan-500 dark:bg-cyan-300',
+    color: 'text-white',
+  },
+  primary: {
+    bg: 'bg-blue-500 dark:bg-blue-300',
+    color: 'text-white',
+  },
+  secondary: {
+    bg: 'bg-blue-gray-500 dark:bg-blue-gray-300',
+    color: 'text-white',
+  },
+  success: {
+    bg: 'bg-green-500 dark:bg-green-300',
+    color: 'text-white',
+  },
+  error: {
+    bg: 'bg-red-500 dark:bg-red-300',
+    color: 'text-white',
   },
   minimal: {
-    border: 'border-2 border-blue-gray-300 dark:border-blue-gray-50',
-    padding: 'p-1',
-  },
+    bg: 'bg-blue-gray-200 dark:bg-blue-gray-50',
+    color: 'text-blue-gray-500',
+  }
 };
 
-export default avatarColorsClasses;
+export default avatarColorClasses;

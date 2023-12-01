@@ -12,10 +12,9 @@ import type {
   variant,
   size,
   withBorder,
-  active,
-  activePlacement,
   containerProps,
   className,
+  children,
 } from '../../types/components/avatar';
 import {
   propTypesSrc,
@@ -23,10 +22,9 @@ import {
   propTypesVariant,
   propTypesSize,
   propTypesWithBorder,
-  propTypesActive,
-  propTypesActivePlacement,
   propTypesContainerProps,
   propTypesClassName,
+  propTypesChildren,
 } from '../../types/components/avatar';
 
 export interface AvatarProps {
@@ -35,10 +33,9 @@ export interface AvatarProps {
   variant?: variant;
   size?: size;
   withBorder?: withBorder;
-  active?: active;
-  activePlacement?: activePlacement;
   containerProps?: containerProps;
   className?: className;
+  children?: children;
 }
 
 export const Avatar = React.forwardRef<
@@ -52,10 +49,9 @@ export const Avatar = React.forwardRef<
       variant,
       size,
       withBorder,
-      active,
-      activePlacement,
       containerProps,
       className,
+      children: childrenProp,
       ...rest
     },
     ref,
@@ -71,54 +67,70 @@ export const Avatar = React.forwardRef<
     size ??= defaultProps?.size;
     withBorder ??= defaultProps?.withBorder;
     className ??= defaultProps?.className;
-    active ??= defaultProps?.active;
-    activePlacement ??= defaultProps?.activePlacement;
+    childrenProp ??= defaultProps?.children;
     containerProps ??= defaultProps?.containerProps;
 
     //3. set styles
-    const validColor = findMatch(valid.colors, color, 'primary');
+    const validBorderColor = findMatch(valid.borderColors, color, 'primary');
     const validVariant = findMatch(valid.variants, variant, 'circular');
     const validSize = findMatch(valid.sizes, size, 'md');
-
+    const validBgColor = findMatch(valid.color, color, 'primary');
     const rootClasses = objectsToString(styles.base);
     const variantClasses = objectsToString(styles.variants[validVariant]);
     const sizeClasses = objectsToString(styles.sizes[validSize]);
 
-    const colorClasses = objectsToString(styles.colors[validColor]);
-    const activeClass = objectsToString(styles.active);
-    const activePlacementClasses = objectsToString(
-      styles.activePlacement[
-        findMatch(valid.placements, activePlacement, 'bottom-left')
-      ],
+    const borderColorClasses = objectsToString(
+      styles.borderColors[validBorderColor],
     );
-
+    const bgColorClasses = objectsToString(styles.colors[validBgColor]);
     const classes = twMerge(
       clsx(
         rootClasses,
         variantClasses,
         sizeClasses,
-        withBorder && colorClasses,
+        withBorder && borderColorClasses,
+        childrenProp && bgColorClasses,
+        'flex items-center justify-center',
       ),
       className,
       containerProps.className,
     );
 
-    const activeClasses = twMerge(clsx(activeClass, activePlacementClasses));
-
-    return (
-      <div {...containerProps} className={classes}>
-        {active && <div className={activeClasses} />}
+    const hasImg = src && typeof src === 'string';
+    let children;
+    if (
+      childrenProp !== null ||
+      (childrenProp !== undefined && React.isValidElement(childrenProp))
+    ) {
+      children = childrenProp;
+    } else if (hasImg) {
+      children = (
         <Image
           {...rest}
           ref={ref}
           alt={rest.alt || 'Avatar'}
           src={src}
-          height="0"
-          width="0"
           sizes="100vw"
-          className="w-full h-auto object-cover mx-auto"
+          width="0"
+          height="0"
+          className={clsx(
+            'w-full h-auto absolute top-1/2 left-1/2 -translate-x-1/2 object-fill object-center scale-105 -translate-y-1/2',
+          )}
         />
-      </div>
+      );
+    } else {
+      children = 'A';
+    }
+
+    return (
+      // <div {...containerProps} className={classes}>
+      //   {children}
+      // </div>
+      React.createElement(
+        'div',
+        { ...containerProps, className: classes },
+        children,
+      )
     );
   },
 );
@@ -131,8 +143,6 @@ Avatar.propTypes = {
   variant: PropTypes.oneOf(propTypesVariant),
   size: PropTypes.oneOf(propTypesSize),
   withBorder: propTypesWithBorder,
-  active: propTypesActive,
-  activePlacement: PropTypes.oneOf(propTypesActivePlacement),
   containerProps: propTypesContainerProps,
   className: propTypesClassName,
 };
